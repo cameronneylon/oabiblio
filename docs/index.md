@@ -3,12 +3,12 @@
 Here is the README:
 
 <pre>
-{{ d['README'] }}
+{{ d['/README'] }}
 </pre>
 
 ## Command Line Interface
 
-{{ d['examples/command-line.sh|idio|shint|pyg']['help'] }}
+{{ d['command-line.sh|idio|shint|pyg']['help'] }}
 
 ## Documentation
 
