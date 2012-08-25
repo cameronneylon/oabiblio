@@ -1,0 +1,2376 @@
+
+<html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8" /> 
+        <style type="text/css">
+            
+/*
+    Fluid Baseline Grid v1.0.0
+    Designed & Built by Josh Hopkins and 40 Horse, http://40horse.com
+    Licensed under Unlicense, http://unlicense.org/
+
+    Base stylesheet with CSS normalization, typographic baseline grid and progressive responsiveness
+*/
+
+/* HTML5 DECLARATIONS */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, dialog {display: block}
+audio[controls],canvas,video {display: inline-block; *display: inline; zoom: 1}
+
+/* BASE */
+html {height: 100%; font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%} /* Force scrollbar in non-IE and Remove iOS text size adjust without disabling user zoom */
+body {margin: 0; min-height: 100%; -webkit-font-smoothing:antialiased; font-smoothing:antialiased; text-rendering:optimizeLegibility; background:url('../images/24px_grid_bg.gif') 0 1.1875em} /* Improve default text rendering, handling of kerning pairs and ligatures */
+
+/* DEFAULT FONT SETTINGS */
+/* 16px base font size with 150% (24px) friendly, unitless line height and margin for vertical rhythm */
+/* Font-size percentage is based on 16px browser default size */
+body, button, input, select, textarea {font: 100%/1.5 Georgia,Palatino,"Palatino Linotype",Times,"Times New Roman",serif; *font-size: 1em; color: #333} /* IE7 and older can't resize px based text */
+p, blockquote, q, pre, address, hr, code, samp, dl, ol, ul, form, table, fieldset, menu, img {margin: 0 0 1.5em; padding: 0}
+
+/* TYPOGRAPHY */
+/* Composed to a scale of 12px, 14px, 16px, 18px, 21px, 24px, 36px, 48px, 60px and 72px */
+h1, h2, h3, h4, h5, h6 {font-family:Futura, "Century Gothic", AppleGothic, sans-serif;color:#222;text-shadow:1px 1px 1px rgba(0,0,0,.10)}
+h1 {margin: 0; font-size: 3.75em; line-height: 1.2em; margin-bottom: 0.4em} /* 60px / 72px */
+h2 {margin: 0; font-size: 3em; line-height: 1em; margin-bottom: 0.5em} /* 48px / 48px */
+h3 {margin: 0; font-size: 2.25em; line-height: 1.3333333333333333333333333333333em; margin-bottom: 0.6667em} /* 36px / 48px */ 
+h4 {margin: 0; font-size: 1.5em; line-height: 1em; margin-bottom: 1em} /* 24px / 24px */
+h5 {margin: 0; font-size: 1.3125em; line-height: 1.1428571428571428571428571428571em; margin-bottom: 1.1428571428571428571428571428571em} /* 21px / 24px */
+h6 {margin: 0; font-size: 1.125em; line-height: 1.3333333333333333333333333333333em; margin-bottom: 1.3333333333333333333333333333333em} /* 18px / 24px */
+p, ul, blockquote, pre, td, th, label {margin: 0; font-size: 1em; line-height: 1.5em; margin-bottom: 1.5em} /* 16px / 24px */
+small, p.small {margin: 0; font-size: 0.875em; line-height: 1.7142857142857142857142857142857em; margin-bottom: 1.7142857142857142857142857142857em} /* 14px / 24px */
+
+/* CODE */
+pre {white-space: pre; white-space: pre-wrap; word-wrap: break-word} /* Allow line wrapping of 'pre' */
+pre, code, kbd, samp {font-size: 1em; line-height: 1.5em; margin-bottom: 1.5em; font-family: Menlo, Consolas, 'DejaVu Sans Mono', Monaco, monospace}
+
+/* TABLES */
+table {border-collapse: collapse; border-spacing: 0; margin-bottom: 1.5em}
+th {text-align: left}
+tr, th, td {padding-right: 1.5em; border-bottom: 0 solid #333}
+
+/* FORMS */
+form {margin: 0}
+fieldset {border: 0;padding: 0}
+textarea {overflow: auto; vertical-align: top}
+legend {*margin-left: -.75em}
+button, input, select, textarea {vertical-align: baseline; *vertical-align: middle} /* IE7 and older */
+button, input {line-height: normal; *overflow: visible}
+button, input[type="button"], input[type="reset"], input[type="submit"] {cursor: pointer;-webkit-appearance: button}
+input[type="checkbox"], input[type="radio"] {box-sizing: border-box}
+input[type="search"] {-webkit-appearance: textfield; -moz-box-sizing: content-box; -webkit-box-sizing: content-box; box-sizing: content-box}
+input[type="search"]::-webkit-search-decoration {-webkit-appearance: none}
+button::-moz-focus-inner, input::-moz-focus-inner {border: 0; padding: 0}
+
+/* QUOTES */
+blockquote, q {quotes: none}
+blockquote:before, blockquote:after, q:before, q:after {content: ''; content: none}
+blockquote, q, cite {font-style: italic}
+blockquote {padding-left: 1.5em; border-left: 3px solid #ccc}
+blockquote > p {padding: 0}
+
+/* LISTS */
+ul, ol {list-style-position: inside; padding: 0}
+li ul, li ol {margin: 0 1.5em}
+dl dd {margin-left: 1.5em}
+dt {font-family:Futura, "Century Gothic", AppleGothic, sans-serif}
+
+/* HYPERLINKS */
+a {text-decoration: none; color:#c47529}
+a:hover {text-decoration: underline}
+a:focus {outline: thin dotted}
+a:hover, a:active {outline: none} /* Better CSS Outline Suppression */
+
+/* MEDIA */
+figure {margin: 0}
+img, object, embed, video {max-width: 100%; _width: 100%} /* Fluid images */
+img {border: 0; -ms-interpolation-mode: bicubic} /* Improve IE's resizing of images */
+svg:not(:root) {overflow: hidden} /* Correct IE9 overflow */
+
+/* ABBREVIATION */
+abbr[title], dfn[title] {border-bottom: 1px dotted #333; cursor: help}
+
+/* MARKED/INSERTED/DELETED AND SELECTED TEXT */
+ins, mark {text-decoration: none}
+mark {background: #c47529}
+ins {background: #d49855}
+del {text-decoration: line-through}
+::-moz-selection {background: #c47529; color: #fff; text-shadow: none} /* selected text */
+::selection {background: #c47529; color: #fff; text-shadow: none} /* selected text */
+
+/* OTHERS */
+strong, b, dt { font-weight: bold}
+dfn {font-style: italic}
+var, address {font-style: normal}
+sub, sup {font-size: 75%; line-height: 0; position: relative; vertical-align: baseline} /* Position 'sub' and 'sup' without affecting line-height */
+sup {top: -0.5em} /* Move superscripted text up */
+sub {bottom: -0.25em} /* Move subscripted text down */
+span.amp{font-family:Adobe Caslon Pro,Baskerville,"Goudy Old Style","Palatino","Palatino Linotype","Book Antiqua",Georgia,"Times New Roman",Times,serif;font-style:italic;font-size:110%;line-height:0;position:relative;vertical-align:baseline} /* Best available ampersand */
+
+/* MICRO CLEARFIX HACK */
+.cf:before, .cf:after {content:"";display:table} /* For modern browsers */
+.cf:after {clear:both}
+.cf {zoom:1} /* For IE 6/7 (trigger hasLayout) */
+
+/* DEFAULT MOBILE STYLE */
+body {width: 92%; margin: 0 auto} /* Center page without wrapper */
+/* column grid */
+.g1,.g2,.g3{display:block; position: relative; margin-left: 1%; margin-right: 1%}
+/* 1 column grid */
+.g1,.g2,.g3{width:98.0%}
+
+
+/* media Queries
+
+FOLDING FLUID GRID
+< 767px         - 1-Column Fluid Grid
+768px - 1023px  - 2-Column Fluid Grid
+> 1024px            - 3-Column Fluid Grid
+Change widths as necessary
+------------------------------------------- */
+
+/* MOBILE PORTRAIT */
+@media only screen and (min-width: 320px) {
+    body {
+        
+    }
+}
+
+/* MOBILE LANDSCAPE */
+@media only screen and (min-width: 480px) {
+    body {
+        
+    }
+}
+
+/* SMALL TABLET */
+@media only screen and (min-width: 600px) {
+    body {
+        
+    }
+}
+
+/* TABLET/NETBOOK */
+@media only screen and (min-width: 768px) { 
+    body {
+        
+    }
+    
+    /* COLUMN GRID */
+    .g1,.g2,.g3 {display:inline; float: left}
+    
+    /* 2 COLUMN GRID */
+    .g1 {width:48.0%}
+    .g2 {width:48.0%}
+    .g3 {width:98.0%}
+}
+
+/* LANDSCAPE TABLET/NETBOOK/LAPTOP */
+@media only screen and (min-width: 1024px) { 
+    body {
+
+    }
+    
+    /* 3 COLUMN GRID */
+    .g1 {width:31.333%}
+    .g2 {width:64.667%;}
+    .g3 {width:98.0%}
+}
+
+@media only screen and (min-width: 1280px) { 
+/* DESKTOP */
+        body {
+
+    }
+}
+
+/* WIDESCREEN */
+/* Increased body size for legibility */
+@media only screen and (min-width: 1400px) { 
+    body {font-size:116.75%; background:url('../images/28px_grid_bg.gif') 0 1.25em; max-width:1440px} /* 18.5px / 28px */
+}
+
+
+/* PRINT */
+@media print {
+  * {background: transparent !important; color: black !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important} /* Black prints faster */
+  a, a:visited {color: #444 !important; text-decoration: underline}
+  a[href]:after {content: " (" attr(href) ")"}
+  abbr[title]:after {content: " (" attr(title) ")"}
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after {content: ""}  /* Don't print links for images, javascript or internal links */
+  pre, blockquote {border: 1px solid #999; page-break-inside: avoid; }
+  thead {display: table-header-group; } /* Repeat header row at top of each printed page */
+  tr, img {page-break-inside: avoid; }
+  img {max-width: 100% !important; }
+  @page {margin: 0.5cm}
+  p, h2, h3 {orphans: 3; widows: 3}
+  h2, h3{page-break-after: avoid}
+}
+
+            
+.highlight .hll { background-color: #ffffcc }
+.highlight .c { color: #888888 } /* Comment */
+.highlight .err { color: #a61717; background-color: #e3d2d2 } /* Error */
+.highlight .k { color: #008800; font-weight: bold } /* Keyword */
+.highlight .cm { color: #888888 } /* Comment.Multiline */
+.highlight .cp { color: #cc0000; font-weight: bold } /* Comment.Preproc */
+.highlight .c1 { color: #888888 } /* Comment.Single */
+.highlight .cs { color: #cc0000; font-weight: bold; background-color: #fff0f0 } /* Comment.Special */
+.highlight .gd { color: #000000; background-color: #ffdddd } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #aa0000 } /* Generic.Error */
+.highlight .gh { color: #303030 } /* Generic.Heading */
+.highlight .gi { color: #000000; background-color: #ddffdd } /* Generic.Inserted */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #555555 } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #606060 } /* Generic.Subheading */
+.highlight .gt { color: #aa0000 } /* Generic.Traceback */
+.highlight .kc { color: #008800; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008800; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008800; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008800 } /* Keyword.Pseudo */
+.highlight .kr { color: #008800; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #888888; font-weight: bold } /* Keyword.Type */
+.highlight .m { color: #0000DD; font-weight: bold } /* Literal.Number */
+.highlight .s { color: #dd2200; background-color: #fff0f0 } /* Literal.String */
+.highlight .na { color: #336699 } /* Name.Attribute */
+.highlight .nb { color: #003388 } /* Name.Builtin */
+.highlight .nc { color: #bb0066; font-weight: bold } /* Name.Class */
+.highlight .no { color: #003366; font-weight: bold } /* Name.Constant */
+.highlight .nd { color: #555555 } /* Name.Decorator */
+.highlight .ne { color: #bb0066; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0066bb; font-weight: bold } /* Name.Function */
+.highlight .nl { color: #336699; font-style: italic } /* Name.Label */
+.highlight .nn { color: #bb0066; font-weight: bold } /* Name.Namespace */
+.highlight .py { color: #336699; font-weight: bold } /* Name.Property */
+.highlight .nt { color: #bb0066; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #336699 } /* Name.Variable */
+.highlight .ow { color: #008800 } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mf { color: #0000DD; font-weight: bold } /* Literal.Number.Float */
+.highlight .mh { color: #0000DD; font-weight: bold } /* Literal.Number.Hex */
+.highlight .mi { color: #0000DD; font-weight: bold } /* Literal.Number.Integer */
+.highlight .mo { color: #0000DD; font-weight: bold } /* Literal.Number.Oct */
+.highlight .sb { color: #dd2200; background-color: #fff0f0 } /* Literal.String.Backtick */
+.highlight .sc { color: #dd2200; background-color: #fff0f0 } /* Literal.String.Char */
+.highlight .sd { color: #dd2200; background-color: #fff0f0 } /* Literal.String.Doc */
+.highlight .s2 { color: #dd2200; background-color: #fff0f0 } /* Literal.String.Double */
+.highlight .se { color: #0044dd; background-color: #fff0f0 } /* Literal.String.Escape */
+.highlight .sh { color: #dd2200; background-color: #fff0f0 } /* Literal.String.Heredoc */
+.highlight .si { color: #3333bb; background-color: #fff0f0 } /* Literal.String.Interpol */
+.highlight .sx { color: #22bb22; background-color: #f0fff0 } /* Literal.String.Other */
+.highlight .sr { color: #008800; background-color: #fff0ff } /* Literal.String.Regex */
+.highlight .s1 { color: #dd2200; background-color: #fff0f0 } /* Literal.String.Single */
+.highlight .ss { color: #aa6600; background-color: #fff0f0 } /* Literal.String.Symbol */
+.highlight .bp { color: #003388 } /* Name.Builtin.Pseudo */
+.highlight .vc { color: #336699 } /* Name.Variable.Class */
+.highlight .vg { color: #dd7700 } /* Name.Variable.Global */
+.highlight .vi { color: #3333bb } /* Name.Variable.Instance */
+.highlight .il { color: #0000DD; font-weight: bold } /* Literal.Number.Integer.Long */
+
+        </style>
+        
+    </head>
+    <body>
+    <div id="content">
+        <div class="g3">
+<h2>README</h2>
+<p>Here is the README:</p>
+<pre>
+oabiblio: A python library for obtaining data on levels of
+open access adoption
+
+Public Domain Waiver:
+To the extent possible under law, Cameron Neylon has waived all 
+copyright and related or neighboring rights to lablogpost.py
+This work is published from United Kingdom.
+
+See http://creativecommons.org/publicdomain/zero/1.0/
+
+Dependencies: The application requires a range of modules from the
+Python 2.7 standard library including urllib, urllib2, re and csv.
+Python is Copyright 2001-2012 Python Software Foundation
+and used here under the PSF Licence for Python 2.7.2
+
+This code additionally depends on the BeautifulSoupt parsing library.
+Development was done using version 3 of this library but it should
+work with version 4.
+
+Data Sources: The library uses sources such as PubMed and CrossRef
+alongside the Directory of Open Access Journals to obtain data on
+publications and licensing.
+
+### Installation
+
+To install from source run:
+"sudo pip install -e ." from within your checkout of this repo.
+
+You should then be able to run the 'oacensus' command on your command line.
+
+Or preferably install this using "pip install -e ." from inside a virtualenv
+http://www.virtualenv.org/en/latest/index.html
+
+### Command Line Interface
+
+The 'oacensus' command generates the report and downloads updates.
+
+Type 'oacensus help' for more information on how to use this command.
+
+</pre>
+
+<h2>Command Line Interface</h2>
+<div class="highlight"><pre><a name="examples--command-line.sh-idio-shint-pyg.html-1"></a><span class="gp">$</span> oacensus <span class="nb">help</span>
+<a name="examples--command-line.sh-idio-shint-pyg.html-2"></a><span class="go">Available commands for oacensus are:</span>
+<a name="examples--command-line.sh-idio-shint-pyg.html-3"></a><span class="go">   help</span>
+<a name="examples--command-line.sh-idio-shint-pyg.html-4"></a><span class="go">   report</span>
+<a name="examples--command-line.sh-idio-shint-pyg.html-5"></a><span class="go">   update</span>
+<a name="examples--command-line.sh-idio-shint-pyg.html-6"></a>
+<a name="examples--command-line.sh-idio-shint-pyg.html-7"></a><span class="go">For help on a particular command type, e.g., &#39;oacensus help -on update&#39;</span>
+</pre></div>
+
+<h2>Documentation</h2>
+<p>Here is a doc string:</p>
+<pre>
+'A class to represent a specific journal
+
+    The class is used to obtain information on a specific journal
+    including licence, publisher, and number of publications.
+    '
+</pre>
+
+<p>Here is method source code for a method in JournalsWithCCLicence:</p>
+<div class="highlight"><pre><a name="pydoc-1"></a>    <span class="k">def</span> <span class="nf">populate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">test</span> <span class="o">=</span> <span class="bp">False</span><span class="p">):</span>
+<a name="pydoc-2"></a>
+<a name="pydoc-3"></a>        <span class="k">try</span><span class="p">:</span>
+<a name="pydoc-4"></a>            <span class="n">i</span><span class="o">=</span><span class="mi">1</span>
+<a name="pydoc-5"></a>            <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">25</span><span class="p">:</span>
+<a name="pydoc-6"></a>                <span class="n">request_url</span> <span class="o">=</span> <span class="s">&quot;http://www.doaj.org/doaj?func=licensedJournals&amp;p=</span><span class="si">%s</span><span class="s">&amp;uiLanguage=en&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<a name="pydoc-7"></a>                <span class="n">response</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">request_url</span><span class="p">)</span>
+<a name="pydoc-8"></a>                <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+<a name="pydoc-9"></a>
+<a name="pydoc-10"></a>                <span class="n">p_tags</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="s">&#39;p&#39;</span><span class="p">,</span> <span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;class&#39;</span> <span class="p">:</span> <span class="s">&#39;text&#39;</span><span class="p">})</span>
+<a name="pydoc-11"></a>                <span class="n">journals_list</span> <span class="o">=</span> <span class="n">p_tags</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<a name="pydoc-12"></a>                <span class="n">links</span> <span class="o">=</span> <span class="n">journals_list</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="s">&#39;a&#39;</span><span class="p">)</span>
+<a name="pydoc-13"></a>                <span class="n">new_tag</span> <span class="o">=</span><span class="n">links</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<a name="pydoc-14"></a>                <span class="k">while</span> <span class="n">new_tag</span><span class="p">:</span>
+<a name="pydoc-15"></a>                    <span class="n">new_journal</span><span class="p">,</span> <span class="n">next_tag</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_journal</span><span class="p">(</span><span class="n">new_tag</span><span class="p">)</span>
+<a name="pydoc-16"></a>                    <span class="n">new_tag</span> <span class="o">=</span> <span class="n">next_tag</span>
+<a name="pydoc-17"></a>                    <span class="bp">self</span><span class="o">.</span><span class="n">add_journal</span><span class="p">(</span><span class="n">new_journal</span><span class="p">)</span>
+<a name="pydoc-18"></a>
+<a name="pydoc-19"></a>                <span class="k">if</span> <span class="n">test</span> <span class="o">==</span> <span class="bp">True</span><span class="p">:</span>
+<a name="pydoc-20"></a>                    <span class="n">i</span><span class="o">=</span><span class="mi">25</span>
+<a name="pydoc-21"></a>                <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>
+<a name="pydoc-22"></a>
+<a name="pydoc-23"></a>        <span class="k">except</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">HTTPError</span><span class="p">:</span>
+<a name="pydoc-24"></a>            <span class="k">return</span> <span class="bp">False</span>
+</pre></div>
+
+<h2>List of Keys</h2>
+<p>This is a list of keys available in <code>modules.txt|pydoc</code> you can include in documentation:</p>
+<ul>
+<li><code>oabiblio.exceptions.HTTPError.__class__:html-source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__class__:latex-source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__class__:source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__class__:value</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__delattr__:html-source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__delattr__:latex-source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__delattr__:source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__delattr__:value</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__dict__:html-source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__dict__:latex-source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__dict__:source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__dict__:value</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__doc__:html-source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__doc__:latex-source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__doc__:source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__doc__:value</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__format__:html-source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__format__:latex-source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__format__:source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__format__:value</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__getattribute__:html-source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__getattribute__:latex-source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__getattribute__:source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__getattribute__:value</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__getitem__:html-source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__getitem__:latex-source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__getitem__:source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__getitem__:value</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__getslice__:html-source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__getslice__:latex-source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__getslice__:source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__getslice__:value</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__hash__:html-source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__hash__:latex-source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__hash__:source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__hash__:value</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__init__:html-source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__init__:latex-source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__init__:source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__init__:value</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__module__:html-source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__module__:latex-source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__module__:source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__module__:value</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__new__:html-source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__new__:latex-source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__new__:source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__new__:value</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__reduce__:html-source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__reduce__:latex-source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__reduce__:source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__reduce__:value</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__reduce_ex__:html-source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__reduce_ex__:latex-source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__reduce_ex__:source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__reduce_ex__:value</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__repr__:html-source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__repr__:latex-source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__repr__:source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__repr__:value</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__setattr__:html-source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__setattr__:latex-source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__setattr__:source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__setattr__:value</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__setstate__:html-source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__setstate__:latex-source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__setstate__:source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__setstate__:value</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__sizeof__:html-source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__sizeof__:latex-source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__sizeof__:source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__sizeof__:value</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__str__:html-source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__str__:latex-source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__str__:source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__str__:value</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__subclasshook__:html-source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__subclasshook__:latex-source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__subclasshook__:source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__subclasshook__:value</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__unicode__:html-source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__unicode__:latex-source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__unicode__:source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__unicode__:value</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__weakref__:html-source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__weakref__:latex-source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__weakref__:source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.__weakref__:value</code></li>
+<li><code>oabiblio.exceptions.HTTPError.args:html-source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.args:latex-source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.args:source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.args:value</code></li>
+<li><code>oabiblio.exceptions.HTTPError.message:html-source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.message:latex-source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.message:source</code></li>
+<li><code>oabiblio.exceptions.HTTPError.message:value</code></li>
+<li><code>oabiblio.exceptions.HTTPError:comments</code></li>
+<li><code>oabiblio.exceptions.HTTPError:doc</code></li>
+<li><code>oabiblio.exceptions.HTTPError:html-source</code></li>
+<li><code>oabiblio.exceptions.HTTPError:latex-source</code></li>
+<li><code>oabiblio.exceptions.HTTPError:source</code></li>
+<li><code>oabiblio.exceptions.HTTPError:value</code></li>
+<li><code>oabiblio.exceptions.InputError.__class__:html-source</code></li>
+<li><code>oabiblio.exceptions.InputError.__class__:latex-source</code></li>
+<li><code>oabiblio.exceptions.InputError.__class__:source</code></li>
+<li><code>oabiblio.exceptions.InputError.__class__:value</code></li>
+<li><code>oabiblio.exceptions.InputError.__delattr__:html-source</code></li>
+<li><code>oabiblio.exceptions.InputError.__delattr__:latex-source</code></li>
+<li><code>oabiblio.exceptions.InputError.__delattr__:source</code></li>
+<li><code>oabiblio.exceptions.InputError.__delattr__:value</code></li>
+<li><code>oabiblio.exceptions.InputError.__dict__:html-source</code></li>
+<li><code>oabiblio.exceptions.InputError.__dict__:latex-source</code></li>
+<li><code>oabiblio.exceptions.InputError.__dict__:source</code></li>
+<li><code>oabiblio.exceptions.InputError.__dict__:value</code></li>
+<li><code>oabiblio.exceptions.InputError.__doc__:html-source</code></li>
+<li><code>oabiblio.exceptions.InputError.__doc__:latex-source</code></li>
+<li><code>oabiblio.exceptions.InputError.__doc__:source</code></li>
+<li><code>oabiblio.exceptions.InputError.__doc__:value</code></li>
+<li><code>oabiblio.exceptions.InputError.__format__:html-source</code></li>
+<li><code>oabiblio.exceptions.InputError.__format__:latex-source</code></li>
+<li><code>oabiblio.exceptions.InputError.__format__:source</code></li>
+<li><code>oabiblio.exceptions.InputError.__format__:value</code></li>
+<li><code>oabiblio.exceptions.InputError.__getattribute__:html-source</code></li>
+<li><code>oabiblio.exceptions.InputError.__getattribute__:latex-source</code></li>
+<li><code>oabiblio.exceptions.InputError.__getattribute__:source</code></li>
+<li><code>oabiblio.exceptions.InputError.__getattribute__:value</code></li>
+<li><code>oabiblio.exceptions.InputError.__getitem__:html-source</code></li>
+<li><code>oabiblio.exceptions.InputError.__getitem__:latex-source</code></li>
+<li><code>oabiblio.exceptions.InputError.__getitem__:source</code></li>
+<li><code>oabiblio.exceptions.InputError.__getitem__:value</code></li>
+<li><code>oabiblio.exceptions.InputError.__getslice__:html-source</code></li>
+<li><code>oabiblio.exceptions.InputError.__getslice__:latex-source</code></li>
+<li><code>oabiblio.exceptions.InputError.__getslice__:source</code></li>
+<li><code>oabiblio.exceptions.InputError.__getslice__:value</code></li>
+<li><code>oabiblio.exceptions.InputError.__hash__:html-source</code></li>
+<li><code>oabiblio.exceptions.InputError.__hash__:latex-source</code></li>
+<li><code>oabiblio.exceptions.InputError.__hash__:source</code></li>
+<li><code>oabiblio.exceptions.InputError.__hash__:value</code></li>
+<li><code>oabiblio.exceptions.InputError.__init__:html-source</code></li>
+<li><code>oabiblio.exceptions.InputError.__init__:latex-source</code></li>
+<li><code>oabiblio.exceptions.InputError.__init__:source</code></li>
+<li><code>oabiblio.exceptions.InputError.__init__:value</code></li>
+<li><code>oabiblio.exceptions.InputError.__module__:html-source</code></li>
+<li><code>oabiblio.exceptions.InputError.__module__:latex-source</code></li>
+<li><code>oabiblio.exceptions.InputError.__module__:source</code></li>
+<li><code>oabiblio.exceptions.InputError.__module__:value</code></li>
+<li><code>oabiblio.exceptions.InputError.__new__:html-source</code></li>
+<li><code>oabiblio.exceptions.InputError.__new__:latex-source</code></li>
+<li><code>oabiblio.exceptions.InputError.__new__:source</code></li>
+<li><code>oabiblio.exceptions.InputError.__new__:value</code></li>
+<li><code>oabiblio.exceptions.InputError.__reduce__:html-source</code></li>
+<li><code>oabiblio.exceptions.InputError.__reduce__:latex-source</code></li>
+<li><code>oabiblio.exceptions.InputError.__reduce__:source</code></li>
+<li><code>oabiblio.exceptions.InputError.__reduce__:value</code></li>
+<li><code>oabiblio.exceptions.InputError.__reduce_ex__:html-source</code></li>
+<li><code>oabiblio.exceptions.InputError.__reduce_ex__:latex-source</code></li>
+<li><code>oabiblio.exceptions.InputError.__reduce_ex__:source</code></li>
+<li><code>oabiblio.exceptions.InputError.__reduce_ex__:value</code></li>
+<li><code>oabiblio.exceptions.InputError.__repr__:html-source</code></li>
+<li><code>oabiblio.exceptions.InputError.__repr__:latex-source</code></li>
+<li><code>oabiblio.exceptions.InputError.__repr__:source</code></li>
+<li><code>oabiblio.exceptions.InputError.__repr__:value</code></li>
+<li><code>oabiblio.exceptions.InputError.__setattr__:html-source</code></li>
+<li><code>oabiblio.exceptions.InputError.__setattr__:latex-source</code></li>
+<li><code>oabiblio.exceptions.InputError.__setattr__:source</code></li>
+<li><code>oabiblio.exceptions.InputError.__setattr__:value</code></li>
+<li><code>oabiblio.exceptions.InputError.__setstate__:html-source</code></li>
+<li><code>oabiblio.exceptions.InputError.__setstate__:latex-source</code></li>
+<li><code>oabiblio.exceptions.InputError.__setstate__:source</code></li>
+<li><code>oabiblio.exceptions.InputError.__setstate__:value</code></li>
+<li><code>oabiblio.exceptions.InputError.__sizeof__:html-source</code></li>
+<li><code>oabiblio.exceptions.InputError.__sizeof__:latex-source</code></li>
+<li><code>oabiblio.exceptions.InputError.__sizeof__:source</code></li>
+<li><code>oabiblio.exceptions.InputError.__sizeof__:value</code></li>
+<li><code>oabiblio.exceptions.InputError.__str__:html-source</code></li>
+<li><code>oabiblio.exceptions.InputError.__str__:latex-source</code></li>
+<li><code>oabiblio.exceptions.InputError.__str__:source</code></li>
+<li><code>oabiblio.exceptions.InputError.__str__:value</code></li>
+<li><code>oabiblio.exceptions.InputError.__subclasshook__:html-source</code></li>
+<li><code>oabiblio.exceptions.InputError.__subclasshook__:latex-source</code></li>
+<li><code>oabiblio.exceptions.InputError.__subclasshook__:source</code></li>
+<li><code>oabiblio.exceptions.InputError.__subclasshook__:value</code></li>
+<li><code>oabiblio.exceptions.InputError.__unicode__:html-source</code></li>
+<li><code>oabiblio.exceptions.InputError.__unicode__:latex-source</code></li>
+<li><code>oabiblio.exceptions.InputError.__unicode__:source</code></li>
+<li><code>oabiblio.exceptions.InputError.__unicode__:value</code></li>
+<li><code>oabiblio.exceptions.InputError.__weakref__:html-source</code></li>
+<li><code>oabiblio.exceptions.InputError.__weakref__:latex-source</code></li>
+<li><code>oabiblio.exceptions.InputError.__weakref__:source</code></li>
+<li><code>oabiblio.exceptions.InputError.__weakref__:value</code></li>
+<li><code>oabiblio.exceptions.InputError.args:html-source</code></li>
+<li><code>oabiblio.exceptions.InputError.args:latex-source</code></li>
+<li><code>oabiblio.exceptions.InputError.args:source</code></li>
+<li><code>oabiblio.exceptions.InputError.args:value</code></li>
+<li><code>oabiblio.exceptions.InputError.message:html-source</code></li>
+<li><code>oabiblio.exceptions.InputError.message:latex-source</code></li>
+<li><code>oabiblio.exceptions.InputError.message:source</code></li>
+<li><code>oabiblio.exceptions.InputError.message:value</code></li>
+<li><code>oabiblio.exceptions.InputError:comments</code></li>
+<li><code>oabiblio.exceptions.InputError:doc</code></li>
+<li><code>oabiblio.exceptions.InputError:html-source</code></li>
+<li><code>oabiblio.exceptions.InputError:latex-source</code></li>
+<li><code>oabiblio.exceptions.InputError:source</code></li>
+<li><code>oabiblio.exceptions.InputError:value</code></li>
+<li><code>oabiblio.exceptions.__builtins__:html-source</code></li>
+<li><code>oabiblio.exceptions.__builtins__:latex-source</code></li>
+<li><code>oabiblio.exceptions.__builtins__:source</code></li>
+<li><code>oabiblio.exceptions.__builtins__:value</code></li>
+<li><code>oabiblio.exceptions.__doc__:html-source</code></li>
+<li><code>oabiblio.exceptions.__doc__:latex-source</code></li>
+<li><code>oabiblio.exceptions.__doc__:source</code></li>
+<li><code>oabiblio.exceptions.__doc__:value</code></li>
+<li><code>oabiblio.exceptions.__file__:html-source</code></li>
+<li><code>oabiblio.exceptions.__file__:latex-source</code></li>
+<li><code>oabiblio.exceptions.__file__:source</code></li>
+<li><code>oabiblio.exceptions.__file__:value</code></li>
+<li><code>oabiblio.exceptions.__name__:html-source</code></li>
+<li><code>oabiblio.exceptions.__name__:latex-source</code></li>
+<li><code>oabiblio.exceptions.__name__:source</code></li>
+<li><code>oabiblio.exceptions.__name__:value</code></li>
+<li><code>oabiblio.exceptions.__package__:html-source</code></li>
+<li><code>oabiblio.exceptions.__package__:latex-source</code></li>
+<li><code>oabiblio.exceptions.__package__:source</code></li>
+<li><code>oabiblio.exceptions.__package__:value</code></li>
+<li><code>oabiblio.exceptions:html-source</code></li>
+<li><code>oabiblio.exceptions:latex-source</code></li>
+<li><code>oabiblio.exceptions:source</code></li>
+<li><code>oabiblio.exceptions:value</code></li>
+<li><code>oabiblio.journal.BeautifulSoup:html-source</code></li>
+<li><code>oabiblio.journal.BeautifulSoup:latex-source</code></li>
+<li><code>oabiblio.journal.BeautifulSoup:source</code></li>
+<li><code>oabiblio.journal.BeautifulSoup:value</code></li>
+<li><code>oabiblio.journal.HTTPError.__class__:html-source</code></li>
+<li><code>oabiblio.journal.HTTPError.__class__:latex-source</code></li>
+<li><code>oabiblio.journal.HTTPError.__class__:source</code></li>
+<li><code>oabiblio.journal.HTTPError.__class__:value</code></li>
+<li><code>oabiblio.journal.HTTPError.__delattr__:html-source</code></li>
+<li><code>oabiblio.journal.HTTPError.__delattr__:latex-source</code></li>
+<li><code>oabiblio.journal.HTTPError.__delattr__:source</code></li>
+<li><code>oabiblio.journal.HTTPError.__delattr__:value</code></li>
+<li><code>oabiblio.journal.HTTPError.__dict__:html-source</code></li>
+<li><code>oabiblio.journal.HTTPError.__dict__:latex-source</code></li>
+<li><code>oabiblio.journal.HTTPError.__dict__:source</code></li>
+<li><code>oabiblio.journal.HTTPError.__dict__:value</code></li>
+<li><code>oabiblio.journal.HTTPError.__doc__:html-source</code></li>
+<li><code>oabiblio.journal.HTTPError.__doc__:latex-source</code></li>
+<li><code>oabiblio.journal.HTTPError.__doc__:source</code></li>
+<li><code>oabiblio.journal.HTTPError.__doc__:value</code></li>
+<li><code>oabiblio.journal.HTTPError.__format__:html-source</code></li>
+<li><code>oabiblio.journal.HTTPError.__format__:latex-source</code></li>
+<li><code>oabiblio.journal.HTTPError.__format__:source</code></li>
+<li><code>oabiblio.journal.HTTPError.__format__:value</code></li>
+<li><code>oabiblio.journal.HTTPError.__getattribute__:html-source</code></li>
+<li><code>oabiblio.journal.HTTPError.__getattribute__:latex-source</code></li>
+<li><code>oabiblio.journal.HTTPError.__getattribute__:source</code></li>
+<li><code>oabiblio.journal.HTTPError.__getattribute__:value</code></li>
+<li><code>oabiblio.journal.HTTPError.__getitem__:html-source</code></li>
+<li><code>oabiblio.journal.HTTPError.__getitem__:latex-source</code></li>
+<li><code>oabiblio.journal.HTTPError.__getitem__:source</code></li>
+<li><code>oabiblio.journal.HTTPError.__getitem__:value</code></li>
+<li><code>oabiblio.journal.HTTPError.__getslice__:html-source</code></li>
+<li><code>oabiblio.journal.HTTPError.__getslice__:latex-source</code></li>
+<li><code>oabiblio.journal.HTTPError.__getslice__:source</code></li>
+<li><code>oabiblio.journal.HTTPError.__getslice__:value</code></li>
+<li><code>oabiblio.journal.HTTPError.__hash__:html-source</code></li>
+<li><code>oabiblio.journal.HTTPError.__hash__:latex-source</code></li>
+<li><code>oabiblio.journal.HTTPError.__hash__:source</code></li>
+<li><code>oabiblio.journal.HTTPError.__hash__:value</code></li>
+<li><code>oabiblio.journal.HTTPError.__init__:html-source</code></li>
+<li><code>oabiblio.journal.HTTPError.__init__:latex-source</code></li>
+<li><code>oabiblio.journal.HTTPError.__init__:source</code></li>
+<li><code>oabiblio.journal.HTTPError.__init__:value</code></li>
+<li><code>oabiblio.journal.HTTPError.__module__:html-source</code></li>
+<li><code>oabiblio.journal.HTTPError.__module__:latex-source</code></li>
+<li><code>oabiblio.journal.HTTPError.__module__:source</code></li>
+<li><code>oabiblio.journal.HTTPError.__module__:value</code></li>
+<li><code>oabiblio.journal.HTTPError.__new__:html-source</code></li>
+<li><code>oabiblio.journal.HTTPError.__new__:latex-source</code></li>
+<li><code>oabiblio.journal.HTTPError.__new__:source</code></li>
+<li><code>oabiblio.journal.HTTPError.__new__:value</code></li>
+<li><code>oabiblio.journal.HTTPError.__reduce__:html-source</code></li>
+<li><code>oabiblio.journal.HTTPError.__reduce__:latex-source</code></li>
+<li><code>oabiblio.journal.HTTPError.__reduce__:source</code></li>
+<li><code>oabiblio.journal.HTTPError.__reduce__:value</code></li>
+<li><code>oabiblio.journal.HTTPError.__reduce_ex__:html-source</code></li>
+<li><code>oabiblio.journal.HTTPError.__reduce_ex__:latex-source</code></li>
+<li><code>oabiblio.journal.HTTPError.__reduce_ex__:source</code></li>
+<li><code>oabiblio.journal.HTTPError.__reduce_ex__:value</code></li>
+<li><code>oabiblio.journal.HTTPError.__repr__:html-source</code></li>
+<li><code>oabiblio.journal.HTTPError.__repr__:latex-source</code></li>
+<li><code>oabiblio.journal.HTTPError.__repr__:source</code></li>
+<li><code>oabiblio.journal.HTTPError.__repr__:value</code></li>
+<li><code>oabiblio.journal.HTTPError.__setattr__:html-source</code></li>
+<li><code>oabiblio.journal.HTTPError.__setattr__:latex-source</code></li>
+<li><code>oabiblio.journal.HTTPError.__setattr__:source</code></li>
+<li><code>oabiblio.journal.HTTPError.__setattr__:value</code></li>
+<li><code>oabiblio.journal.HTTPError.__setstate__:html-source</code></li>
+<li><code>oabiblio.journal.HTTPError.__setstate__:latex-source</code></li>
+<li><code>oabiblio.journal.HTTPError.__setstate__:source</code></li>
+<li><code>oabiblio.journal.HTTPError.__setstate__:value</code></li>
+<li><code>oabiblio.journal.HTTPError.__sizeof__:html-source</code></li>
+<li><code>oabiblio.journal.HTTPError.__sizeof__:latex-source</code></li>
+<li><code>oabiblio.journal.HTTPError.__sizeof__:source</code></li>
+<li><code>oabiblio.journal.HTTPError.__sizeof__:value</code></li>
+<li><code>oabiblio.journal.HTTPError.__str__:html-source</code></li>
+<li><code>oabiblio.journal.HTTPError.__str__:latex-source</code></li>
+<li><code>oabiblio.journal.HTTPError.__str__:source</code></li>
+<li><code>oabiblio.journal.HTTPError.__str__:value</code></li>
+<li><code>oabiblio.journal.HTTPError.__subclasshook__:html-source</code></li>
+<li><code>oabiblio.journal.HTTPError.__subclasshook__:latex-source</code></li>
+<li><code>oabiblio.journal.HTTPError.__subclasshook__:source</code></li>
+<li><code>oabiblio.journal.HTTPError.__subclasshook__:value</code></li>
+<li><code>oabiblio.journal.HTTPError.__unicode__:html-source</code></li>
+<li><code>oabiblio.journal.HTTPError.__unicode__:latex-source</code></li>
+<li><code>oabiblio.journal.HTTPError.__unicode__:source</code></li>
+<li><code>oabiblio.journal.HTTPError.__unicode__:value</code></li>
+<li><code>oabiblio.journal.HTTPError.__weakref__:html-source</code></li>
+<li><code>oabiblio.journal.HTTPError.__weakref__:latex-source</code></li>
+<li><code>oabiblio.journal.HTTPError.__weakref__:source</code></li>
+<li><code>oabiblio.journal.HTTPError.__weakref__:value</code></li>
+<li><code>oabiblio.journal.HTTPError.args:html-source</code></li>
+<li><code>oabiblio.journal.HTTPError.args:latex-source</code></li>
+<li><code>oabiblio.journal.HTTPError.args:source</code></li>
+<li><code>oabiblio.journal.HTTPError.args:value</code></li>
+<li><code>oabiblio.journal.HTTPError.message:html-source</code></li>
+<li><code>oabiblio.journal.HTTPError.message:latex-source</code></li>
+<li><code>oabiblio.journal.HTTPError.message:source</code></li>
+<li><code>oabiblio.journal.HTTPError.message:value</code></li>
+<li><code>oabiblio.journal.HTTPError:comments</code></li>
+<li><code>oabiblio.journal.HTTPError:doc</code></li>
+<li><code>oabiblio.journal.HTTPError:html-source</code></li>
+<li><code>oabiblio.journal.HTTPError:latex-source</code></li>
+<li><code>oabiblio.journal.HTTPError:source</code></li>
+<li><code>oabiblio.journal.HTTPError:value</code></li>
+<li><code>oabiblio.journal.Journal.__doc__:html-source</code></li>
+<li><code>oabiblio.journal.Journal.__doc__:latex-source</code></li>
+<li><code>oabiblio.journal.Journal.__doc__:source</code></li>
+<li><code>oabiblio.journal.Journal.__doc__:value</code></li>
+<li><code>oabiblio.journal.Journal.__init__:comments</code></li>
+<li><code>oabiblio.journal.Journal.__init__:doc</code></li>
+<li><code>oabiblio.journal.Journal.__init__:html-source</code></li>
+<li><code>oabiblio.journal.Journal.__init__:latex-source</code></li>
+<li><code>oabiblio.journal.Journal.__init__:source</code></li>
+<li><code>oabiblio.journal.Journal.__init__:value</code></li>
+<li><code>oabiblio.journal.Journal.__module__:html-source</code></li>
+<li><code>oabiblio.journal.Journal.__module__:latex-source</code></li>
+<li><code>oabiblio.journal.Journal.__module__:source</code></li>
+<li><code>oabiblio.journal.Journal.__module__:value</code></li>
+<li><code>oabiblio.journal.Journal.__str__:comments</code></li>
+<li><code>oabiblio.journal.Journal.__str__:doc</code></li>
+<li><code>oabiblio.journal.Journal.__str__:html-source</code></li>
+<li><code>oabiblio.journal.Journal.__str__:latex-source</code></li>
+<li><code>oabiblio.journal.Journal.__str__:source</code></li>
+<li><code>oabiblio.journal.Journal.__str__:value</code></li>
+<li><code>oabiblio.journal.Journal.get_licence_from_doaj:comments</code></li>
+<li><code>oabiblio.journal.Journal.get_licence_from_doaj:doc</code></li>
+<li><code>oabiblio.journal.Journal.get_licence_from_doaj:html-source</code></li>
+<li><code>oabiblio.journal.Journal.get_licence_from_doaj:latex-source</code></li>
+<li><code>oabiblio.journal.Journal.get_licence_from_doaj:source</code></li>
+<li><code>oabiblio.journal.Journal.get_licence_from_doaj:value</code></li>
+<li><code>oabiblio.journal.Journal.isCCBY:comments</code></li>
+<li><code>oabiblio.journal.Journal.isCCBY:doc</code></li>
+<li><code>oabiblio.journal.Journal.isCCBY:html-source</code></li>
+<li><code>oabiblio.journal.Journal.isCCBY:latex-source</code></li>
+<li><code>oabiblio.journal.Journal.isCCBY:source</code></li>
+<li><code>oabiblio.journal.Journal.isCCBY:value</code></li>
+<li><code>oabiblio.journal.Journal.isCCBYNC:comments</code></li>
+<li><code>oabiblio.journal.Journal.isCCBYNC:doc</code></li>
+<li><code>oabiblio.journal.Journal.isCCBYNC:html-source</code></li>
+<li><code>oabiblio.journal.Journal.isCCBYNC:latex-source</code></li>
+<li><code>oabiblio.journal.Journal.isCCBYNC:source</code></li>
+<li><code>oabiblio.journal.Journal.isCCBYNC:value</code></li>
+<li><code>oabiblio.journal.Journal:comments</code></li>
+<li><code>oabiblio.journal.Journal:doc</code></li>
+<li><code>oabiblio.journal.Journal:html-source</code></li>
+<li><code>oabiblio.journal.Journal:latex-source</code></li>
+<li><code>oabiblio.journal.Journal:source</code></li>
+<li><code>oabiblio.journal.Journal:value</code></li>
+<li><code>oabiblio.journal.__builtins__:html-source</code></li>
+<li><code>oabiblio.journal.__builtins__:latex-source</code></li>
+<li><code>oabiblio.journal.__builtins__:source</code></li>
+<li><code>oabiblio.journal.__builtins__:value</code></li>
+<li><code>oabiblio.journal.__doc__:html-source</code></li>
+<li><code>oabiblio.journal.__doc__:latex-source</code></li>
+<li><code>oabiblio.journal.__doc__:source</code></li>
+<li><code>oabiblio.journal.__doc__:value</code></li>
+<li><code>oabiblio.journal.__file__:html-source</code></li>
+<li><code>oabiblio.journal.__file__:latex-source</code></li>
+<li><code>oabiblio.journal.__file__:source</code></li>
+<li><code>oabiblio.journal.__file__:value</code></li>
+<li><code>oabiblio.journal.__name__:html-source</code></li>
+<li><code>oabiblio.journal.__name__:latex-source</code></li>
+<li><code>oabiblio.journal.__name__:source</code></li>
+<li><code>oabiblio.journal.__name__:value</code></li>
+<li><code>oabiblio.journal.__package__:html-source</code></li>
+<li><code>oabiblio.journal.__package__:latex-source</code></li>
+<li><code>oabiblio.journal.__package__:source</code></li>
+<li><code>oabiblio.journal.__package__:value</code></li>
+<li><code>oabiblio.journal.re:html-source</code></li>
+<li><code>oabiblio.journal.re:latex-source</code></li>
+<li><code>oabiblio.journal.re:source</code></li>
+<li><code>oabiblio.journal.re:value</code></li>
+<li><code>oabiblio.journal.urllib2:html-source</code></li>
+<li><code>oabiblio.journal.urllib2:latex-source</code></li>
+<li><code>oabiblio.journal.urllib2:source</code></li>
+<li><code>oabiblio.journal.urllib2:value</code></li>
+<li><code>oabiblio.journal.urllib:html-source</code></li>
+<li><code>oabiblio.journal.urllib:latex-source</code></li>
+<li><code>oabiblio.journal.urllib:source</code></li>
+<li><code>oabiblio.journal.urllib:value</code></li>
+<li><code>oabiblio.journal:html-source</code></li>
+<li><code>oabiblio.journal:latex-source</code></li>
+<li><code>oabiblio.journal:source</code></li>
+<li><code>oabiblio.journal:value</code></li>
+<li><code>oabiblio.journal_list.BeautifulSoup:html-source</code></li>
+<li><code>oabiblio.journal_list.BeautifulSoup:latex-source</code></li>
+<li><code>oabiblio.journal_list.BeautifulSoup:source</code></li>
+<li><code>oabiblio.journal_list.BeautifulSoup:value</code></li>
+<li><code>oabiblio.journal_list.InputError.__class__:html-source</code></li>
+<li><code>oabiblio.journal_list.InputError.__class__:latex-source</code></li>
+<li><code>oabiblio.journal_list.InputError.__class__:source</code></li>
+<li><code>oabiblio.journal_list.InputError.__class__:value</code></li>
+<li><code>oabiblio.journal_list.InputError.__delattr__:html-source</code></li>
+<li><code>oabiblio.journal_list.InputError.__delattr__:latex-source</code></li>
+<li><code>oabiblio.journal_list.InputError.__delattr__:source</code></li>
+<li><code>oabiblio.journal_list.InputError.__delattr__:value</code></li>
+<li><code>oabiblio.journal_list.InputError.__dict__:html-source</code></li>
+<li><code>oabiblio.journal_list.InputError.__dict__:latex-source</code></li>
+<li><code>oabiblio.journal_list.InputError.__dict__:source</code></li>
+<li><code>oabiblio.journal_list.InputError.__dict__:value</code></li>
+<li><code>oabiblio.journal_list.InputError.__doc__:html-source</code></li>
+<li><code>oabiblio.journal_list.InputError.__doc__:latex-source</code></li>
+<li><code>oabiblio.journal_list.InputError.__doc__:source</code></li>
+<li><code>oabiblio.journal_list.InputError.__doc__:value</code></li>
+<li><code>oabiblio.journal_list.InputError.__format__:html-source</code></li>
+<li><code>oabiblio.journal_list.InputError.__format__:latex-source</code></li>
+<li><code>oabiblio.journal_list.InputError.__format__:source</code></li>
+<li><code>oabiblio.journal_list.InputError.__format__:value</code></li>
+<li><code>oabiblio.journal_list.InputError.__getattribute__:html-source</code></li>
+<li><code>oabiblio.journal_list.InputError.__getattribute__:latex-source</code></li>
+<li><code>oabiblio.journal_list.InputError.__getattribute__:source</code></li>
+<li><code>oabiblio.journal_list.InputError.__getattribute__:value</code></li>
+<li><code>oabiblio.journal_list.InputError.__getitem__:html-source</code></li>
+<li><code>oabiblio.journal_list.InputError.__getitem__:latex-source</code></li>
+<li><code>oabiblio.journal_list.InputError.__getitem__:source</code></li>
+<li><code>oabiblio.journal_list.InputError.__getitem__:value</code></li>
+<li><code>oabiblio.journal_list.InputError.__getslice__:html-source</code></li>
+<li><code>oabiblio.journal_list.InputError.__getslice__:latex-source</code></li>
+<li><code>oabiblio.journal_list.InputError.__getslice__:source</code></li>
+<li><code>oabiblio.journal_list.InputError.__getslice__:value</code></li>
+<li><code>oabiblio.journal_list.InputError.__hash__:html-source</code></li>
+<li><code>oabiblio.journal_list.InputError.__hash__:latex-source</code></li>
+<li><code>oabiblio.journal_list.InputError.__hash__:source</code></li>
+<li><code>oabiblio.journal_list.InputError.__hash__:value</code></li>
+<li><code>oabiblio.journal_list.InputError.__init__:html-source</code></li>
+<li><code>oabiblio.journal_list.InputError.__init__:latex-source</code></li>
+<li><code>oabiblio.journal_list.InputError.__init__:source</code></li>
+<li><code>oabiblio.journal_list.InputError.__init__:value</code></li>
+<li><code>oabiblio.journal_list.InputError.__module__:html-source</code></li>
+<li><code>oabiblio.journal_list.InputError.__module__:latex-source</code></li>
+<li><code>oabiblio.journal_list.InputError.__module__:source</code></li>
+<li><code>oabiblio.journal_list.InputError.__module__:value</code></li>
+<li><code>oabiblio.journal_list.InputError.__new__:html-source</code></li>
+<li><code>oabiblio.journal_list.InputError.__new__:latex-source</code></li>
+<li><code>oabiblio.journal_list.InputError.__new__:source</code></li>
+<li><code>oabiblio.journal_list.InputError.__new__:value</code></li>
+<li><code>oabiblio.journal_list.InputError.__reduce__:html-source</code></li>
+<li><code>oabiblio.journal_list.InputError.__reduce__:latex-source</code></li>
+<li><code>oabiblio.journal_list.InputError.__reduce__:source</code></li>
+<li><code>oabiblio.journal_list.InputError.__reduce__:value</code></li>
+<li><code>oabiblio.journal_list.InputError.__reduce_ex__:html-source</code></li>
+<li><code>oabiblio.journal_list.InputError.__reduce_ex__:latex-source</code></li>
+<li><code>oabiblio.journal_list.InputError.__reduce_ex__:source</code></li>
+<li><code>oabiblio.journal_list.InputError.__reduce_ex__:value</code></li>
+<li><code>oabiblio.journal_list.InputError.__repr__:html-source</code></li>
+<li><code>oabiblio.journal_list.InputError.__repr__:latex-source</code></li>
+<li><code>oabiblio.journal_list.InputError.__repr__:source</code></li>
+<li><code>oabiblio.journal_list.InputError.__repr__:value</code></li>
+<li><code>oabiblio.journal_list.InputError.__setattr__:html-source</code></li>
+<li><code>oabiblio.journal_list.InputError.__setattr__:latex-source</code></li>
+<li><code>oabiblio.journal_list.InputError.__setattr__:source</code></li>
+<li><code>oabiblio.journal_list.InputError.__setattr__:value</code></li>
+<li><code>oabiblio.journal_list.InputError.__setstate__:html-source</code></li>
+<li><code>oabiblio.journal_list.InputError.__setstate__:latex-source</code></li>
+<li><code>oabiblio.journal_list.InputError.__setstate__:source</code></li>
+<li><code>oabiblio.journal_list.InputError.__setstate__:value</code></li>
+<li><code>oabiblio.journal_list.InputError.__sizeof__:html-source</code></li>
+<li><code>oabiblio.journal_list.InputError.__sizeof__:latex-source</code></li>
+<li><code>oabiblio.journal_list.InputError.__sizeof__:source</code></li>
+<li><code>oabiblio.journal_list.InputError.__sizeof__:value</code></li>
+<li><code>oabiblio.journal_list.InputError.__str__:html-source</code></li>
+<li><code>oabiblio.journal_list.InputError.__str__:latex-source</code></li>
+<li><code>oabiblio.journal_list.InputError.__str__:source</code></li>
+<li><code>oabiblio.journal_list.InputError.__str__:value</code></li>
+<li><code>oabiblio.journal_list.InputError.__subclasshook__:html-source</code></li>
+<li><code>oabiblio.journal_list.InputError.__subclasshook__:latex-source</code></li>
+<li><code>oabiblio.journal_list.InputError.__subclasshook__:source</code></li>
+<li><code>oabiblio.journal_list.InputError.__subclasshook__:value</code></li>
+<li><code>oabiblio.journal_list.InputError.__unicode__:html-source</code></li>
+<li><code>oabiblio.journal_list.InputError.__unicode__:latex-source</code></li>
+<li><code>oabiblio.journal_list.InputError.__unicode__:source</code></li>
+<li><code>oabiblio.journal_list.InputError.__unicode__:value</code></li>
+<li><code>oabiblio.journal_list.InputError.__weakref__:html-source</code></li>
+<li><code>oabiblio.journal_list.InputError.__weakref__:latex-source</code></li>
+<li><code>oabiblio.journal_list.InputError.__weakref__:source</code></li>
+<li><code>oabiblio.journal_list.InputError.__weakref__:value</code></li>
+<li><code>oabiblio.journal_list.InputError.args:html-source</code></li>
+<li><code>oabiblio.journal_list.InputError.args:latex-source</code></li>
+<li><code>oabiblio.journal_list.InputError.args:source</code></li>
+<li><code>oabiblio.journal_list.InputError.args:value</code></li>
+<li><code>oabiblio.journal_list.InputError.message:html-source</code></li>
+<li><code>oabiblio.journal_list.InputError.message:latex-source</code></li>
+<li><code>oabiblio.journal_list.InputError.message:source</code></li>
+<li><code>oabiblio.journal_list.InputError.message:value</code></li>
+<li><code>oabiblio.journal_list.InputError:comments</code></li>
+<li><code>oabiblio.journal_list.InputError:doc</code></li>
+<li><code>oabiblio.journal_list.InputError:html-source</code></li>
+<li><code>oabiblio.journal_list.InputError:latex-source</code></li>
+<li><code>oabiblio.journal_list.InputError:source</code></li>
+<li><code>oabiblio.journal_list.InputError:value</code></li>
+<li><code>oabiblio.journal_list.Journal.__doc__:html-source</code></li>
+<li><code>oabiblio.journal_list.Journal.__doc__:latex-source</code></li>
+<li><code>oabiblio.journal_list.Journal.__doc__:source</code></li>
+<li><code>oabiblio.journal_list.Journal.__doc__:value</code></li>
+<li><code>oabiblio.journal_list.Journal.__init__:comments</code></li>
+<li><code>oabiblio.journal_list.Journal.__init__:doc</code></li>
+<li><code>oabiblio.journal_list.Journal.__init__:html-source</code></li>
+<li><code>oabiblio.journal_list.Journal.__init__:latex-source</code></li>
+<li><code>oabiblio.journal_list.Journal.__init__:source</code></li>
+<li><code>oabiblio.journal_list.Journal.__init__:value</code></li>
+<li><code>oabiblio.journal_list.Journal.__module__:html-source</code></li>
+<li><code>oabiblio.journal_list.Journal.__module__:latex-source</code></li>
+<li><code>oabiblio.journal_list.Journal.__module__:source</code></li>
+<li><code>oabiblio.journal_list.Journal.__module__:value</code></li>
+<li><code>oabiblio.journal_list.Journal.__str__:comments</code></li>
+<li><code>oabiblio.journal_list.Journal.__str__:doc</code></li>
+<li><code>oabiblio.journal_list.Journal.__str__:html-source</code></li>
+<li><code>oabiblio.journal_list.Journal.__str__:latex-source</code></li>
+<li><code>oabiblio.journal_list.Journal.__str__:source</code></li>
+<li><code>oabiblio.journal_list.Journal.__str__:value</code></li>
+<li><code>oabiblio.journal_list.Journal.get_licence_from_doaj:comments</code></li>
+<li><code>oabiblio.journal_list.Journal.get_licence_from_doaj:doc</code></li>
+<li><code>oabiblio.journal_list.Journal.get_licence_from_doaj:html-source</code></li>
+<li><code>oabiblio.journal_list.Journal.get_licence_from_doaj:latex-source</code></li>
+<li><code>oabiblio.journal_list.Journal.get_licence_from_doaj:source</code></li>
+<li><code>oabiblio.journal_list.Journal.get_licence_from_doaj:value</code></li>
+<li><code>oabiblio.journal_list.Journal.isCCBY:comments</code></li>
+<li><code>oabiblio.journal_list.Journal.isCCBY:doc</code></li>
+<li><code>oabiblio.journal_list.Journal.isCCBY:html-source</code></li>
+<li><code>oabiblio.journal_list.Journal.isCCBY:latex-source</code></li>
+<li><code>oabiblio.journal_list.Journal.isCCBY:source</code></li>
+<li><code>oabiblio.journal_list.Journal.isCCBY:value</code></li>
+<li><code>oabiblio.journal_list.Journal.isCCBYNC:comments</code></li>
+<li><code>oabiblio.journal_list.Journal.isCCBYNC:doc</code></li>
+<li><code>oabiblio.journal_list.Journal.isCCBYNC:html-source</code></li>
+<li><code>oabiblio.journal_list.Journal.isCCBYNC:latex-source</code></li>
+<li><code>oabiblio.journal_list.Journal.isCCBYNC:source</code></li>
+<li><code>oabiblio.journal_list.Journal.isCCBYNC:value</code></li>
+<li><code>oabiblio.journal_list.Journal:comments</code></li>
+<li><code>oabiblio.journal_list.Journal:doc</code></li>
+<li><code>oabiblio.journal_list.Journal:html-source</code></li>
+<li><code>oabiblio.journal_list.Journal:latex-source</code></li>
+<li><code>oabiblio.journal_list.Journal:source</code></li>
+<li><code>oabiblio.journal_list.Journal:value</code></li>
+<li><code>oabiblio.journal_list.JournalList.__doc__:html-source</code></li>
+<li><code>oabiblio.journal_list.JournalList.__doc__:latex-source</code></li>
+<li><code>oabiblio.journal_list.JournalList.__doc__:source</code></li>
+<li><code>oabiblio.journal_list.JournalList.__doc__:value</code></li>
+<li><code>oabiblio.journal_list.JournalList.__init__:comments</code></li>
+<li><code>oabiblio.journal_list.JournalList.__init__:doc</code></li>
+<li><code>oabiblio.journal_list.JournalList.__init__:html-source</code></li>
+<li><code>oabiblio.journal_list.JournalList.__init__:latex-source</code></li>
+<li><code>oabiblio.journal_list.JournalList.__init__:source</code></li>
+<li><code>oabiblio.journal_list.JournalList.__init__:value</code></li>
+<li><code>oabiblio.journal_list.JournalList.__module__:html-source</code></li>
+<li><code>oabiblio.journal_list.JournalList.__module__:latex-source</code></li>
+<li><code>oabiblio.journal_list.JournalList.__module__:source</code></li>
+<li><code>oabiblio.journal_list.JournalList.__module__:value</code></li>
+<li><code>oabiblio.journal_list.JournalList.add_journal:comments</code></li>
+<li><code>oabiblio.journal_list.JournalList.add_journal:doc</code></li>
+<li><code>oabiblio.journal_list.JournalList.add_journal:html-source</code></li>
+<li><code>oabiblio.journal_list.JournalList.add_journal:latex-source</code></li>
+<li><code>oabiblio.journal_list.JournalList.add_journal:source</code></li>
+<li><code>oabiblio.journal_list.JournalList.add_journal:value</code></li>
+<li><code>oabiblio.journal_list.JournalList.filter_by_licence:comments</code></li>
+<li><code>oabiblio.journal_list.JournalList.filter_by_licence:doc</code></li>
+<li><code>oabiblio.journal_list.JournalList.filter_by_licence:html-source</code></li>
+<li><code>oabiblio.journal_list.JournalList.filter_by_licence:latex-source</code></li>
+<li><code>oabiblio.journal_list.JournalList.filter_by_licence:source</code></li>
+<li><code>oabiblio.journal_list.JournalList.filter_by_licence:value</code></li>
+<li><code>oabiblio.journal_list.JournalList.load_from_csv:comments</code></li>
+<li><code>oabiblio.journal_list.JournalList.load_from_csv:doc</code></li>
+<li><code>oabiblio.journal_list.JournalList.load_from_csv:html-source</code></li>
+<li><code>oabiblio.journal_list.JournalList.load_from_csv:latex-source</code></li>
+<li><code>oabiblio.journal_list.JournalList.load_from_csv:source</code></li>
+<li><code>oabiblio.journal_list.JournalList.load_from_csv:value</code></li>
+<li><code>oabiblio.journal_list.JournalList.write_journal_list:comments</code></li>
+<li><code>oabiblio.journal_list.JournalList.write_journal_list:doc</code></li>
+<li><code>oabiblio.journal_list.JournalList.write_journal_list:html-source</code></li>
+<li><code>oabiblio.journal_list.JournalList.write_journal_list:latex-source</code></li>
+<li><code>oabiblio.journal_list.JournalList.write_journal_list:source</code></li>
+<li><code>oabiblio.journal_list.JournalList.write_journal_list:value</code></li>
+<li><code>oabiblio.journal_list.JournalList:comments</code></li>
+<li><code>oabiblio.journal_list.JournalList:doc</code></li>
+<li><code>oabiblio.journal_list.JournalList:html-source</code></li>
+<li><code>oabiblio.journal_list.JournalList:latex-source</code></li>
+<li><code>oabiblio.journal_list.JournalList:source</code></li>
+<li><code>oabiblio.journal_list.JournalList:value</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence.__doc__:html-source</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence.__doc__:latex-source</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence.__doc__:source</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence.__doc__:value</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence.__init__:comments</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence.__init__:doc</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence.__init__:html-source</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence.__init__:latex-source</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence.__init__:source</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence.__init__:value</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence.__module__:html-source</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence.__module__:latex-source</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence.__module__:source</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence.__module__:value</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence.add_journal:comments</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence.add_journal:doc</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence.add_journal:html-source</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence.add_journal:latex-source</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence.add_journal:source</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence.add_journal:value</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence.filter_by_licence:comments</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence.filter_by_licence:doc</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence.filter_by_licence:html-source</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence.filter_by_licence:latex-source</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence.filter_by_licence:source</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence.filter_by_licence:value</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence.load_from_csv:comments</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence.load_from_csv:doc</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence.load_from_csv:html-source</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence.load_from_csv:latex-source</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence.load_from_csv:source</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence.load_from_csv:value</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence.populate:comments</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence.populate:doc</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence.populate:html-source</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence.populate:latex-source</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence.populate:source</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence.populate:value</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence.process_journal:comments</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence.process_journal:doc</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence.process_journal:html-source</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence.process_journal:latex-source</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence.process_journal:source</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence.process_journal:value</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence.write_journal_list:comments</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence.write_journal_list:doc</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence.write_journal_list:html-source</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence.write_journal_list:latex-source</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence.write_journal_list:source</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence.write_journal_list:value</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence:comments</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence:doc</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence:html-source</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence:latex-source</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence:source</code></li>
+<li><code>oabiblio.journal_list.JournalsWithCCLicence:value</code></li>
+<li><code>oabiblio.journal_list.Publisher.__doc__:html-source</code></li>
+<li><code>oabiblio.journal_list.Publisher.__doc__:latex-source</code></li>
+<li><code>oabiblio.journal_list.Publisher.__doc__:source</code></li>
+<li><code>oabiblio.journal_list.Publisher.__doc__:value</code></li>
+<li><code>oabiblio.journal_list.Publisher.__init__:comments</code></li>
+<li><code>oabiblio.journal_list.Publisher.__init__:doc</code></li>
+<li><code>oabiblio.journal_list.Publisher.__init__:html-source</code></li>
+<li><code>oabiblio.journal_list.Publisher.__init__:latex-source</code></li>
+<li><code>oabiblio.journal_list.Publisher.__init__:source</code></li>
+<li><code>oabiblio.journal_list.Publisher.__init__:value</code></li>
+<li><code>oabiblio.journal_list.Publisher.__module__:html-source</code></li>
+<li><code>oabiblio.journal_list.Publisher.__module__:latex-source</code></li>
+<li><code>oabiblio.journal_list.Publisher.__module__:source</code></li>
+<li><code>oabiblio.journal_list.Publisher.__module__:value</code></li>
+<li><code>oabiblio.journal_list.Publisher.add_journal:comments</code></li>
+<li><code>oabiblio.journal_list.Publisher.add_journal:doc</code></li>
+<li><code>oabiblio.journal_list.Publisher.add_journal:html-source</code></li>
+<li><code>oabiblio.journal_list.Publisher.add_journal:latex-source</code></li>
+<li><code>oabiblio.journal_list.Publisher.add_journal:source</code></li>
+<li><code>oabiblio.journal_list.Publisher.add_journal:value</code></li>
+<li><code>oabiblio.journal_list.Publisher.filter_by_licence:comments</code></li>
+<li><code>oabiblio.journal_list.Publisher.filter_by_licence:doc</code></li>
+<li><code>oabiblio.journal_list.Publisher.filter_by_licence:html-source</code></li>
+<li><code>oabiblio.journal_list.Publisher.filter_by_licence:latex-source</code></li>
+<li><code>oabiblio.journal_list.Publisher.filter_by_licence:source</code></li>
+<li><code>oabiblio.journal_list.Publisher.filter_by_licence:value</code></li>
+<li><code>oabiblio.journal_list.Publisher.load_from_csv:comments</code></li>
+<li><code>oabiblio.journal_list.Publisher.load_from_csv:doc</code></li>
+<li><code>oabiblio.journal_list.Publisher.load_from_csv:html-source</code></li>
+<li><code>oabiblio.journal_list.Publisher.load_from_csv:latex-source</code></li>
+<li><code>oabiblio.journal_list.Publisher.load_from_csv:source</code></li>
+<li><code>oabiblio.journal_list.Publisher.load_from_csv:value</code></li>
+<li><code>oabiblio.journal_list.Publisher.write_journal_list:comments</code></li>
+<li><code>oabiblio.journal_list.Publisher.write_journal_list:doc</code></li>
+<li><code>oabiblio.journal_list.Publisher.write_journal_list:html-source</code></li>
+<li><code>oabiblio.journal_list.Publisher.write_journal_list:latex-source</code></li>
+<li><code>oabiblio.journal_list.Publisher.write_journal_list:source</code></li>
+<li><code>oabiblio.journal_list.Publisher.write_journal_list:value</code></li>
+<li><code>oabiblio.journal_list.Publisher:comments</code></li>
+<li><code>oabiblio.journal_list.Publisher:doc</code></li>
+<li><code>oabiblio.journal_list.Publisher:html-source</code></li>
+<li><code>oabiblio.journal_list.Publisher:latex-source</code></li>
+<li><code>oabiblio.journal_list.Publisher:source</code></li>
+<li><code>oabiblio.journal_list.Publisher:value</code></li>
+<li><code>oabiblio.journal_list.__builtins__:html-source</code></li>
+<li><code>oabiblio.journal_list.__builtins__:latex-source</code></li>
+<li><code>oabiblio.journal_list.__builtins__:source</code></li>
+<li><code>oabiblio.journal_list.__builtins__:value</code></li>
+<li><code>oabiblio.journal_list.__doc__:html-source</code></li>
+<li><code>oabiblio.journal_list.__doc__:latex-source</code></li>
+<li><code>oabiblio.journal_list.__doc__:source</code></li>
+<li><code>oabiblio.journal_list.__doc__:value</code></li>
+<li><code>oabiblio.journal_list.__file__:html-source</code></li>
+<li><code>oabiblio.journal_list.__file__:latex-source</code></li>
+<li><code>oabiblio.journal_list.__file__:source</code></li>
+<li><code>oabiblio.journal_list.__file__:value</code></li>
+<li><code>oabiblio.journal_list.__name__:html-source</code></li>
+<li><code>oabiblio.journal_list.__name__:latex-source</code></li>
+<li><code>oabiblio.journal_list.__name__:source</code></li>
+<li><code>oabiblio.journal_list.__name__:value</code></li>
+<li><code>oabiblio.journal_list.__package__:html-source</code></li>
+<li><code>oabiblio.journal_list.__package__:latex-source</code></li>
+<li><code>oabiblio.journal_list.__package__:source</code></li>
+<li><code>oabiblio.journal_list.__package__:value</code></li>
+<li><code>oabiblio.journal_list.csv:html-source</code></li>
+<li><code>oabiblio.journal_list.csv:latex-source</code></li>
+<li><code>oabiblio.journal_list.csv:source</code></li>
+<li><code>oabiblio.journal_list.csv:value</code></li>
+<li><code>oabiblio.journal_list.re:html-source</code></li>
+<li><code>oabiblio.journal_list.re:latex-source</code></li>
+<li><code>oabiblio.journal_list.re:source</code></li>
+<li><code>oabiblio.journal_list.re:value</code></li>
+<li><code>oabiblio.journal_list.urllib2:html-source</code></li>
+<li><code>oabiblio.journal_list.urllib2:latex-source</code></li>
+<li><code>oabiblio.journal_list.urllib2:source</code></li>
+<li><code>oabiblio.journal_list.urllib2:value</code></li>
+<li><code>oabiblio.journal_list:html-source</code></li>
+<li><code>oabiblio.journal_list:latex-source</code></li>
+<li><code>oabiblio.journal_list:source</code></li>
+<li><code>oabiblio.journal_list:value</code></li>
+<li><code>oabiblio.oacensus_commands.BeautifulSoup:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.BeautifulSoup:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.BeautifulSoup:source</code></li>
+<li><code>oabiblio.oacensus_commands.BeautifulSoup:value</code></li>
+<li><code>oabiblio.oacensus_commands.DEFAULT_COMMAND:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.DEFAULT_COMMAND:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.DEFAULT_COMMAND:source</code></li>
+<li><code>oabiblio.oacensus_commands.DEFAULT_COMMAND:value</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__class__:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__class__:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__class__:source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__class__:value</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__delattr__:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__delattr__:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__delattr__:source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__delattr__:value</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__dict__:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__dict__:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__dict__:source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__dict__:value</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__doc__:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__doc__:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__doc__:source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__doc__:value</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__format__:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__format__:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__format__:source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__format__:value</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__getattribute__:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__getattribute__:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__getattribute__:source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__getattribute__:value</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__getitem__:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__getitem__:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__getitem__:source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__getitem__:value</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__getslice__:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__getslice__:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__getslice__:source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__getslice__:value</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__hash__:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__hash__:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__hash__:source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__hash__:value</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__init__:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__init__:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__init__:source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__init__:value</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__module__:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__module__:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__module__:source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__module__:value</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__new__:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__new__:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__new__:source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__new__:value</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__reduce__:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__reduce__:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__reduce__:source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__reduce__:value</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__reduce_ex__:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__reduce_ex__:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__reduce_ex__:source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__reduce_ex__:value</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__repr__:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__repr__:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__repr__:source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__repr__:value</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__setattr__:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__setattr__:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__setattr__:source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__setattr__:value</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__setstate__:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__setstate__:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__setstate__:source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__setstate__:value</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__sizeof__:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__sizeof__:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__sizeof__:source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__sizeof__:value</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__str__:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__str__:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__str__:source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__str__:value</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__subclasshook__:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__subclasshook__:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__subclasshook__:source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__subclasshook__:value</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__unicode__:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__unicode__:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__unicode__:source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__unicode__:value</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__weakref__:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__weakref__:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__weakref__:source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.__weakref__:value</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.args:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.args:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.args:source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.args:value</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.message:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.message:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.message:source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError.message:value</code></li>
+<li><code>oabiblio.oacensus_commands.InputError:comments</code></li>
+<li><code>oabiblio.oacensus_commands.InputError:doc</code></li>
+<li><code>oabiblio.oacensus_commands.InputError:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError:source</code></li>
+<li><code>oabiblio.oacensus_commands.InputError:value</code></li>
+<li><code>oabiblio.oacensus_commands.Journal.__doc__:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.Journal.__doc__:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.Journal.__doc__:source</code></li>
+<li><code>oabiblio.oacensus_commands.Journal.__doc__:value</code></li>
+<li><code>oabiblio.oacensus_commands.Journal.__init__:comments</code></li>
+<li><code>oabiblio.oacensus_commands.Journal.__init__:doc</code></li>
+<li><code>oabiblio.oacensus_commands.Journal.__init__:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.Journal.__init__:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.Journal.__init__:source</code></li>
+<li><code>oabiblio.oacensus_commands.Journal.__init__:value</code></li>
+<li><code>oabiblio.oacensus_commands.Journal.__module__:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.Journal.__module__:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.Journal.__module__:source</code></li>
+<li><code>oabiblio.oacensus_commands.Journal.__module__:value</code></li>
+<li><code>oabiblio.oacensus_commands.Journal.__str__:comments</code></li>
+<li><code>oabiblio.oacensus_commands.Journal.__str__:doc</code></li>
+<li><code>oabiblio.oacensus_commands.Journal.__str__:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.Journal.__str__:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.Journal.__str__:source</code></li>
+<li><code>oabiblio.oacensus_commands.Journal.__str__:value</code></li>
+<li><code>oabiblio.oacensus_commands.Journal.get_licence_from_doaj:comments</code></li>
+<li><code>oabiblio.oacensus_commands.Journal.get_licence_from_doaj:doc</code></li>
+<li><code>oabiblio.oacensus_commands.Journal.get_licence_from_doaj:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.Journal.get_licence_from_doaj:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.Journal.get_licence_from_doaj:source</code></li>
+<li><code>oabiblio.oacensus_commands.Journal.get_licence_from_doaj:value</code></li>
+<li><code>oabiblio.oacensus_commands.Journal.isCCBY:comments</code></li>
+<li><code>oabiblio.oacensus_commands.Journal.isCCBY:doc</code></li>
+<li><code>oabiblio.oacensus_commands.Journal.isCCBY:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.Journal.isCCBY:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.Journal.isCCBY:source</code></li>
+<li><code>oabiblio.oacensus_commands.Journal.isCCBY:value</code></li>
+<li><code>oabiblio.oacensus_commands.Journal.isCCBYNC:comments</code></li>
+<li><code>oabiblio.oacensus_commands.Journal.isCCBYNC:doc</code></li>
+<li><code>oabiblio.oacensus_commands.Journal.isCCBYNC:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.Journal.isCCBYNC:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.Journal.isCCBYNC:source</code></li>
+<li><code>oabiblio.oacensus_commands.Journal.isCCBYNC:value</code></li>
+<li><code>oabiblio.oacensus_commands.Journal:comments</code></li>
+<li><code>oabiblio.oacensus_commands.Journal:doc</code></li>
+<li><code>oabiblio.oacensus_commands.Journal:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.Journal:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.Journal:source</code></li>
+<li><code>oabiblio.oacensus_commands.Journal:value</code></li>
+<li><code>oabiblio.oacensus_commands.JournalList.__doc__:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalList.__doc__:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalList.__doc__:source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalList.__doc__:value</code></li>
+<li><code>oabiblio.oacensus_commands.JournalList.__init__:comments</code></li>
+<li><code>oabiblio.oacensus_commands.JournalList.__init__:doc</code></li>
+<li><code>oabiblio.oacensus_commands.JournalList.__init__:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalList.__init__:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalList.__init__:source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalList.__init__:value</code></li>
+<li><code>oabiblio.oacensus_commands.JournalList.__module__:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalList.__module__:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalList.__module__:source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalList.__module__:value</code></li>
+<li><code>oabiblio.oacensus_commands.JournalList.add_journal:comments</code></li>
+<li><code>oabiblio.oacensus_commands.JournalList.add_journal:doc</code></li>
+<li><code>oabiblio.oacensus_commands.JournalList.add_journal:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalList.add_journal:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalList.add_journal:source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalList.add_journal:value</code></li>
+<li><code>oabiblio.oacensus_commands.JournalList.filter_by_licence:comments</code></li>
+<li><code>oabiblio.oacensus_commands.JournalList.filter_by_licence:doc</code></li>
+<li><code>oabiblio.oacensus_commands.JournalList.filter_by_licence:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalList.filter_by_licence:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalList.filter_by_licence:source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalList.filter_by_licence:value</code></li>
+<li><code>oabiblio.oacensus_commands.JournalList.load_from_csv:comments</code></li>
+<li><code>oabiblio.oacensus_commands.JournalList.load_from_csv:doc</code></li>
+<li><code>oabiblio.oacensus_commands.JournalList.load_from_csv:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalList.load_from_csv:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalList.load_from_csv:source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalList.load_from_csv:value</code></li>
+<li><code>oabiblio.oacensus_commands.JournalList.write_journal_list:comments</code></li>
+<li><code>oabiblio.oacensus_commands.JournalList.write_journal_list:doc</code></li>
+<li><code>oabiblio.oacensus_commands.JournalList.write_journal_list:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalList.write_journal_list:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalList.write_journal_list:source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalList.write_journal_list:value</code></li>
+<li><code>oabiblio.oacensus_commands.JournalList:comments</code></li>
+<li><code>oabiblio.oacensus_commands.JournalList:doc</code></li>
+<li><code>oabiblio.oacensus_commands.JournalList:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalList:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalList:source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalList:value</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence.__doc__:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence.__doc__:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence.__doc__:source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence.__doc__:value</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence.__init__:comments</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence.__init__:doc</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence.__init__:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence.__init__:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence.__init__:source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence.__init__:value</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence.__module__:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence.__module__:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence.__module__:source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence.__module__:value</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence.add_journal:comments</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence.add_journal:doc</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence.add_journal:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence.add_journal:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence.add_journal:source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence.add_journal:value</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence.filter_by_licence:comments</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence.filter_by_licence:doc</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence.filter_by_licence:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence.filter_by_licence:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence.filter_by_licence:source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence.filter_by_licence:value</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence.load_from_csv:comments</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence.load_from_csv:doc</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence.load_from_csv:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence.load_from_csv:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence.load_from_csv:source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence.load_from_csv:value</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence.populate:comments</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence.populate:doc</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence.populate:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence.populate:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence.populate:source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence.populate:value</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence.process_journal:comments</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence.process_journal:doc</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence.process_journal:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence.process_journal:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence.process_journal:source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence.process_journal:value</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence.write_journal_list:comments</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence.write_journal_list:doc</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence.write_journal_list:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence.write_journal_list:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence.write_journal_list:source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence.write_journal_list:value</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence:comments</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence:doc</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence:source</code></li>
+<li><code>oabiblio.oacensus_commands.JournalsWithCCLicence:value</code></li>
+<li><code>oabiblio.oacensus_commands.MOD:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.MOD:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.MOD:source</code></li>
+<li><code>oabiblio.oacensus_commands.MOD:value</code></li>
+<li><code>oabiblio.oacensus_commands.PROG:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.PROG:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.PROG:source</code></li>
+<li><code>oabiblio.oacensus_commands.PROG:value</code></li>
+<li><code>oabiblio.oacensus_commands.Publisher.__doc__:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.Publisher.__doc__:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.Publisher.__doc__:source</code></li>
+<li><code>oabiblio.oacensus_commands.Publisher.__doc__:value</code></li>
+<li><code>oabiblio.oacensus_commands.Publisher.__init__:comments</code></li>
+<li><code>oabiblio.oacensus_commands.Publisher.__init__:doc</code></li>
+<li><code>oabiblio.oacensus_commands.Publisher.__init__:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.Publisher.__init__:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.Publisher.__init__:source</code></li>
+<li><code>oabiblio.oacensus_commands.Publisher.__init__:value</code></li>
+<li><code>oabiblio.oacensus_commands.Publisher.__module__:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.Publisher.__module__:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.Publisher.__module__:source</code></li>
+<li><code>oabiblio.oacensus_commands.Publisher.__module__:value</code></li>
+<li><code>oabiblio.oacensus_commands.Publisher.add_journal:comments</code></li>
+<li><code>oabiblio.oacensus_commands.Publisher.add_journal:doc</code></li>
+<li><code>oabiblio.oacensus_commands.Publisher.add_journal:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.Publisher.add_journal:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.Publisher.add_journal:source</code></li>
+<li><code>oabiblio.oacensus_commands.Publisher.add_journal:value</code></li>
+<li><code>oabiblio.oacensus_commands.Publisher.filter_by_licence:comments</code></li>
+<li><code>oabiblio.oacensus_commands.Publisher.filter_by_licence:doc</code></li>
+<li><code>oabiblio.oacensus_commands.Publisher.filter_by_licence:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.Publisher.filter_by_licence:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.Publisher.filter_by_licence:source</code></li>
+<li><code>oabiblio.oacensus_commands.Publisher.filter_by_licence:value</code></li>
+<li><code>oabiblio.oacensus_commands.Publisher.load_from_csv:comments</code></li>
+<li><code>oabiblio.oacensus_commands.Publisher.load_from_csv:doc</code></li>
+<li><code>oabiblio.oacensus_commands.Publisher.load_from_csv:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.Publisher.load_from_csv:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.Publisher.load_from_csv:source</code></li>
+<li><code>oabiblio.oacensus_commands.Publisher.load_from_csv:value</code></li>
+<li><code>oabiblio.oacensus_commands.Publisher.write_journal_list:comments</code></li>
+<li><code>oabiblio.oacensus_commands.Publisher.write_journal_list:doc</code></li>
+<li><code>oabiblio.oacensus_commands.Publisher.write_journal_list:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.Publisher.write_journal_list:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.Publisher.write_journal_list:source</code></li>
+<li><code>oabiblio.oacensus_commands.Publisher.write_journal_list:value</code></li>
+<li><code>oabiblio.oacensus_commands.Publisher:comments</code></li>
+<li><code>oabiblio.oacensus_commands.Publisher:doc</code></li>
+<li><code>oabiblio.oacensus_commands.Publisher:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.Publisher:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.Publisher:source</code></li>
+<li><code>oabiblio.oacensus_commands.Publisher:value</code></li>
+<li><code>oabiblio.oacensus_commands.__builtins__:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.__builtins__:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.__builtins__:source</code></li>
+<li><code>oabiblio.oacensus_commands.__builtins__:value</code></li>
+<li><code>oabiblio.oacensus_commands.__doc__:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.__doc__:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.__doc__:source</code></li>
+<li><code>oabiblio.oacensus_commands.__doc__:value</code></li>
+<li><code>oabiblio.oacensus_commands.__file__:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.__file__:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.__file__:source</code></li>
+<li><code>oabiblio.oacensus_commands.__file__:value</code></li>
+<li><code>oabiblio.oacensus_commands.__name__:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.__name__:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.__name__:source</code></li>
+<li><code>oabiblio.oacensus_commands.__name__:value</code></li>
+<li><code>oabiblio.oacensus_commands.__package__:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.__package__:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.__package__:source</code></li>
+<li><code>oabiblio.oacensus_commands.__package__:value</code></li>
+<li><code>oabiblio.oacensus_commands.args:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.args:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.args:source</code></li>
+<li><code>oabiblio.oacensus_commands.args:value</code></li>
+<li><code>oabiblio.oacensus_commands.csv:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.csv:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.csv:source</code></li>
+<li><code>oabiblio.oacensus_commands.csv:value</code></li>
+<li><code>oabiblio.oacensus_commands.help_command:comments</code></li>
+<li><code>oabiblio.oacensus_commands.help_command:doc</code></li>
+<li><code>oabiblio.oacensus_commands.help_command:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.help_command:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.help_command:source</code></li>
+<li><code>oabiblio.oacensus_commands.help_command:value</code></li>
+<li><code>oabiblio.oacensus_commands.help_text:comments</code></li>
+<li><code>oabiblio.oacensus_commands.help_text:doc</code></li>
+<li><code>oabiblio.oacensus_commands.help_text:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.help_text:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.help_text:source</code></li>
+<li><code>oabiblio.oacensus_commands.help_text:value</code></li>
+<li><code>oabiblio.oacensus_commands.re:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.re:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.re:source</code></li>
+<li><code>oabiblio.oacensus_commands.re:value</code></li>
+<li><code>oabiblio.oacensus_commands.report_command:comments</code></li>
+<li><code>oabiblio.oacensus_commands.report_command:doc</code></li>
+<li><code>oabiblio.oacensus_commands.report_command:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.report_command:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.report_command:source</code></li>
+<li><code>oabiblio.oacensus_commands.report_command:value</code></li>
+<li><code>oabiblio.oacensus_commands.run:comments</code></li>
+<li><code>oabiblio.oacensus_commands.run:doc</code></li>
+<li><code>oabiblio.oacensus_commands.run:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.run:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.run:source</code></li>
+<li><code>oabiblio.oacensus_commands.run:value</code></li>
+<li><code>oabiblio.oacensus_commands.sys:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.sys:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.sys:source</code></li>
+<li><code>oabiblio.oacensus_commands.sys:value</code></li>
+<li><code>oabiblio.oacensus_commands.update_command:comments</code></li>
+<li><code>oabiblio.oacensus_commands.update_command:doc</code></li>
+<li><code>oabiblio.oacensus_commands.update_command:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.update_command:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.update_command:source</code></li>
+<li><code>oabiblio.oacensus_commands.update_command:value</code></li>
+<li><code>oabiblio.oacensus_commands.urllib2:html-source</code></li>
+<li><code>oabiblio.oacensus_commands.urllib2:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands.urllib2:source</code></li>
+<li><code>oabiblio.oacensus_commands.urllib2:value</code></li>
+<li><code>oabiblio.oacensus_commands:html-source</code></li>
+<li><code>oabiblio.oacensus_commands:latex-source</code></li>
+<li><code>oabiblio.oacensus_commands:source</code></li>
+<li><code>oabiblio.oacensus_commands:value</code></li>
+<li><code>oabiblio.parser.BeautifulSoup:html-source</code></li>
+<li><code>oabiblio.parser.BeautifulSoup:latex-source</code></li>
+<li><code>oabiblio.parser.BeautifulSoup:source</code></li>
+<li><code>oabiblio.parser.BeautifulSoup:value</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.__doc__:html-source</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.__doc__:latex-source</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.__doc__:source</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.__doc__:value</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.__init__:comments</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.__init__:doc</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.__init__:html-source</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.__init__:latex-source</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.__init__:source</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.__init__:value</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.__module__:html-source</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.__module__:latex-source</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.__module__:source</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.__module__:value</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.get_and_parse_dep_record:comments</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.get_and_parse_dep_record:doc</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.get_and_parse_dep_record:html-source</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.get_and_parse_dep_record:latex-source</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.get_and_parse_dep_record:source</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.get_and_parse_dep_record:value</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.get_publisher_name:comments</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.get_publisher_name:doc</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.get_publisher_name:html-source</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.get_publisher_name:latex-source</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.get_publisher_name:source</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.get_publisher_name:value</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.get_publishers:comments</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.get_publishers:doc</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.get_publishers:html-source</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.get_publishers:latex-source</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.get_publishers:source</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.get_publishers:value</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.get_record:comments</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.get_record:doc</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.get_record:html-source</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.get_record:latex-source</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.get_record:source</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.get_record:value</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.parse_journals:comments</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.parse_journals:doc</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.parse_journals:html-source</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.parse_journals:latex-source</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.parse_journals:source</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.parse_journals:value</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.parse_response:comments</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.parse_response:doc</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.parse_response:html-source</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.parse_response:latex-source</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.parse_response:source</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.parse_response:value</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.write_journal_list:comments</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.write_journal_list:doc</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.write_journal_list:html-source</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.write_journal_list:latex-source</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.write_journal_list:source</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser.write_journal_list:value</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser:comments</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser:doc</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser:html-source</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser:latex-source</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser:source</code></li>
+<li><code>oabiblio.parser.CrossRefDepRecordParser:value</code></li>
+<li><code>oabiblio.parser.InputError.__class__:html-source</code></li>
+<li><code>oabiblio.parser.InputError.__class__:latex-source</code></li>
+<li><code>oabiblio.parser.InputError.__class__:source</code></li>
+<li><code>oabiblio.parser.InputError.__class__:value</code></li>
+<li><code>oabiblio.parser.InputError.__delattr__:html-source</code></li>
+<li><code>oabiblio.parser.InputError.__delattr__:latex-source</code></li>
+<li><code>oabiblio.parser.InputError.__delattr__:source</code></li>
+<li><code>oabiblio.parser.InputError.__delattr__:value</code></li>
+<li><code>oabiblio.parser.InputError.__dict__:html-source</code></li>
+<li><code>oabiblio.parser.InputError.__dict__:latex-source</code></li>
+<li><code>oabiblio.parser.InputError.__dict__:source</code></li>
+<li><code>oabiblio.parser.InputError.__dict__:value</code></li>
+<li><code>oabiblio.parser.InputError.__doc__:html-source</code></li>
+<li><code>oabiblio.parser.InputError.__doc__:latex-source</code></li>
+<li><code>oabiblio.parser.InputError.__doc__:source</code></li>
+<li><code>oabiblio.parser.InputError.__doc__:value</code></li>
+<li><code>oabiblio.parser.InputError.__format__:html-source</code></li>
+<li><code>oabiblio.parser.InputError.__format__:latex-source</code></li>
+<li><code>oabiblio.parser.InputError.__format__:source</code></li>
+<li><code>oabiblio.parser.InputError.__format__:value</code></li>
+<li><code>oabiblio.parser.InputError.__getattribute__:html-source</code></li>
+<li><code>oabiblio.parser.InputError.__getattribute__:latex-source</code></li>
+<li><code>oabiblio.parser.InputError.__getattribute__:source</code></li>
+<li><code>oabiblio.parser.InputError.__getattribute__:value</code></li>
+<li><code>oabiblio.parser.InputError.__getitem__:html-source</code></li>
+<li><code>oabiblio.parser.InputError.__getitem__:latex-source</code></li>
+<li><code>oabiblio.parser.InputError.__getitem__:source</code></li>
+<li><code>oabiblio.parser.InputError.__getitem__:value</code></li>
+<li><code>oabiblio.parser.InputError.__getslice__:html-source</code></li>
+<li><code>oabiblio.parser.InputError.__getslice__:latex-source</code></li>
+<li><code>oabiblio.parser.InputError.__getslice__:source</code></li>
+<li><code>oabiblio.parser.InputError.__getslice__:value</code></li>
+<li><code>oabiblio.parser.InputError.__hash__:html-source</code></li>
+<li><code>oabiblio.parser.InputError.__hash__:latex-source</code></li>
+<li><code>oabiblio.parser.InputError.__hash__:source</code></li>
+<li><code>oabiblio.parser.InputError.__hash__:value</code></li>
+<li><code>oabiblio.parser.InputError.__init__:html-source</code></li>
+<li><code>oabiblio.parser.InputError.__init__:latex-source</code></li>
+<li><code>oabiblio.parser.InputError.__init__:source</code></li>
+<li><code>oabiblio.parser.InputError.__init__:value</code></li>
+<li><code>oabiblio.parser.InputError.__module__:html-source</code></li>
+<li><code>oabiblio.parser.InputError.__module__:latex-source</code></li>
+<li><code>oabiblio.parser.InputError.__module__:source</code></li>
+<li><code>oabiblio.parser.InputError.__module__:value</code></li>
+<li><code>oabiblio.parser.InputError.__new__:html-source</code></li>
+<li><code>oabiblio.parser.InputError.__new__:latex-source</code></li>
+<li><code>oabiblio.parser.InputError.__new__:source</code></li>
+<li><code>oabiblio.parser.InputError.__new__:value</code></li>
+<li><code>oabiblio.parser.InputError.__reduce__:html-source</code></li>
+<li><code>oabiblio.parser.InputError.__reduce__:latex-source</code></li>
+<li><code>oabiblio.parser.InputError.__reduce__:source</code></li>
+<li><code>oabiblio.parser.InputError.__reduce__:value</code></li>
+<li><code>oabiblio.parser.InputError.__reduce_ex__:html-source</code></li>
+<li><code>oabiblio.parser.InputError.__reduce_ex__:latex-source</code></li>
+<li><code>oabiblio.parser.InputError.__reduce_ex__:source</code></li>
+<li><code>oabiblio.parser.InputError.__reduce_ex__:value</code></li>
+<li><code>oabiblio.parser.InputError.__repr__:html-source</code></li>
+<li><code>oabiblio.parser.InputError.__repr__:latex-source</code></li>
+<li><code>oabiblio.parser.InputError.__repr__:source</code></li>
+<li><code>oabiblio.parser.InputError.__repr__:value</code></li>
+<li><code>oabiblio.parser.InputError.__setattr__:html-source</code></li>
+<li><code>oabiblio.parser.InputError.__setattr__:latex-source</code></li>
+<li><code>oabiblio.parser.InputError.__setattr__:source</code></li>
+<li><code>oabiblio.parser.InputError.__setattr__:value</code></li>
+<li><code>oabiblio.parser.InputError.__setstate__:html-source</code></li>
+<li><code>oabiblio.parser.InputError.__setstate__:latex-source</code></li>
+<li><code>oabiblio.parser.InputError.__setstate__:source</code></li>
+<li><code>oabiblio.parser.InputError.__setstate__:value</code></li>
+<li><code>oabiblio.parser.InputError.__sizeof__:html-source</code></li>
+<li><code>oabiblio.parser.InputError.__sizeof__:latex-source</code></li>
+<li><code>oabiblio.parser.InputError.__sizeof__:source</code></li>
+<li><code>oabiblio.parser.InputError.__sizeof__:value</code></li>
+<li><code>oabiblio.parser.InputError.__str__:html-source</code></li>
+<li><code>oabiblio.parser.InputError.__str__:latex-source</code></li>
+<li><code>oabiblio.parser.InputError.__str__:source</code></li>
+<li><code>oabiblio.parser.InputError.__str__:value</code></li>
+<li><code>oabiblio.parser.InputError.__subclasshook__:html-source</code></li>
+<li><code>oabiblio.parser.InputError.__subclasshook__:latex-source</code></li>
+<li><code>oabiblio.parser.InputError.__subclasshook__:source</code></li>
+<li><code>oabiblio.parser.InputError.__subclasshook__:value</code></li>
+<li><code>oabiblio.parser.InputError.__unicode__:html-source</code></li>
+<li><code>oabiblio.parser.InputError.__unicode__:latex-source</code></li>
+<li><code>oabiblio.parser.InputError.__unicode__:source</code></li>
+<li><code>oabiblio.parser.InputError.__unicode__:value</code></li>
+<li><code>oabiblio.parser.InputError.__weakref__:html-source</code></li>
+<li><code>oabiblio.parser.InputError.__weakref__:latex-source</code></li>
+<li><code>oabiblio.parser.InputError.__weakref__:source</code></li>
+<li><code>oabiblio.parser.InputError.__weakref__:value</code></li>
+<li><code>oabiblio.parser.InputError.args:html-source</code></li>
+<li><code>oabiblio.parser.InputError.args:latex-source</code></li>
+<li><code>oabiblio.parser.InputError.args:source</code></li>
+<li><code>oabiblio.parser.InputError.args:value</code></li>
+<li><code>oabiblio.parser.InputError.message:html-source</code></li>
+<li><code>oabiblio.parser.InputError.message:latex-source</code></li>
+<li><code>oabiblio.parser.InputError.message:source</code></li>
+<li><code>oabiblio.parser.InputError.message:value</code></li>
+<li><code>oabiblio.parser.InputError:comments</code></li>
+<li><code>oabiblio.parser.InputError:doc</code></li>
+<li><code>oabiblio.parser.InputError:html-source</code></li>
+<li><code>oabiblio.parser.InputError:latex-source</code></li>
+<li><code>oabiblio.parser.InputError:source</code></li>
+<li><code>oabiblio.parser.InputError:value</code></li>
+<li><code>oabiblio.parser.__builtins__:html-source</code></li>
+<li><code>oabiblio.parser.__builtins__:latex-source</code></li>
+<li><code>oabiblio.parser.__builtins__:source</code></li>
+<li><code>oabiblio.parser.__builtins__:value</code></li>
+<li><code>oabiblio.parser.__doc__:html-source</code></li>
+<li><code>oabiblio.parser.__doc__:latex-source</code></li>
+<li><code>oabiblio.parser.__doc__:source</code></li>
+<li><code>oabiblio.parser.__doc__:value</code></li>
+<li><code>oabiblio.parser.__file__:html-source</code></li>
+<li><code>oabiblio.parser.__file__:latex-source</code></li>
+<li><code>oabiblio.parser.__file__:source</code></li>
+<li><code>oabiblio.parser.__file__:value</code></li>
+<li><code>oabiblio.parser.__name__:html-source</code></li>
+<li><code>oabiblio.parser.__name__:latex-source</code></li>
+<li><code>oabiblio.parser.__name__:source</code></li>
+<li><code>oabiblio.parser.__name__:value</code></li>
+<li><code>oabiblio.parser.__package__:html-source</code></li>
+<li><code>oabiblio.parser.__package__:latex-source</code></li>
+<li><code>oabiblio.parser.__package__:source</code></li>
+<li><code>oabiblio.parser.__package__:value</code></li>
+<li><code>oabiblio.parser.csv:html-source</code></li>
+<li><code>oabiblio.parser.csv:latex-source</code></li>
+<li><code>oabiblio.parser.csv:source</code></li>
+<li><code>oabiblio.parser.csv:value</code></li>
+<li><code>oabiblio.parser.urllib2:html-source</code></li>
+<li><code>oabiblio.parser.urllib2:latex-source</code></li>
+<li><code>oabiblio.parser.urllib2:source</code></li>
+<li><code>oabiblio.parser.urllib2:value</code></li>
+<li><code>oabiblio.parser:html-source</code></li>
+<li><code>oabiblio.parser:latex-source</code></li>
+<li><code>oabiblio.parser:source</code></li>
+<li><code>oabiblio.parser:value</code></li>
+<li><code>oabiblio.reports.BeautifulSoup:html-source</code></li>
+<li><code>oabiblio.reports.BeautifulSoup:latex-source</code></li>
+<li><code>oabiblio.reports.BeautifulSoup:source</code></li>
+<li><code>oabiblio.reports.BeautifulSoup:value</code></li>
+<li><code>oabiblio.reports.InputError.__class__:html-source</code></li>
+<li><code>oabiblio.reports.InputError.__class__:latex-source</code></li>
+<li><code>oabiblio.reports.InputError.__class__:source</code></li>
+<li><code>oabiblio.reports.InputError.__class__:value</code></li>
+<li><code>oabiblio.reports.InputError.__delattr__:html-source</code></li>
+<li><code>oabiblio.reports.InputError.__delattr__:latex-source</code></li>
+<li><code>oabiblio.reports.InputError.__delattr__:source</code></li>
+<li><code>oabiblio.reports.InputError.__delattr__:value</code></li>
+<li><code>oabiblio.reports.InputError.__dict__:html-source</code></li>
+<li><code>oabiblio.reports.InputError.__dict__:latex-source</code></li>
+<li><code>oabiblio.reports.InputError.__dict__:source</code></li>
+<li><code>oabiblio.reports.InputError.__dict__:value</code></li>
+<li><code>oabiblio.reports.InputError.__doc__:html-source</code></li>
+<li><code>oabiblio.reports.InputError.__doc__:latex-source</code></li>
+<li><code>oabiblio.reports.InputError.__doc__:source</code></li>
+<li><code>oabiblio.reports.InputError.__doc__:value</code></li>
+<li><code>oabiblio.reports.InputError.__format__:html-source</code></li>
+<li><code>oabiblio.reports.InputError.__format__:latex-source</code></li>
+<li><code>oabiblio.reports.InputError.__format__:source</code></li>
+<li><code>oabiblio.reports.InputError.__format__:value</code></li>
+<li><code>oabiblio.reports.InputError.__getattribute__:html-source</code></li>
+<li><code>oabiblio.reports.InputError.__getattribute__:latex-source</code></li>
+<li><code>oabiblio.reports.InputError.__getattribute__:source</code></li>
+<li><code>oabiblio.reports.InputError.__getattribute__:value</code></li>
+<li><code>oabiblio.reports.InputError.__getitem__:html-source</code></li>
+<li><code>oabiblio.reports.InputError.__getitem__:latex-source</code></li>
+<li><code>oabiblio.reports.InputError.__getitem__:source</code></li>
+<li><code>oabiblio.reports.InputError.__getitem__:value</code></li>
+<li><code>oabiblio.reports.InputError.__getslice__:html-source</code></li>
+<li><code>oabiblio.reports.InputError.__getslice__:latex-source</code></li>
+<li><code>oabiblio.reports.InputError.__getslice__:source</code></li>
+<li><code>oabiblio.reports.InputError.__getslice__:value</code></li>
+<li><code>oabiblio.reports.InputError.__hash__:html-source</code></li>
+<li><code>oabiblio.reports.InputError.__hash__:latex-source</code></li>
+<li><code>oabiblio.reports.InputError.__hash__:source</code></li>
+<li><code>oabiblio.reports.InputError.__hash__:value</code></li>
+<li><code>oabiblio.reports.InputError.__init__:html-source</code></li>
+<li><code>oabiblio.reports.InputError.__init__:latex-source</code></li>
+<li><code>oabiblio.reports.InputError.__init__:source</code></li>
+<li><code>oabiblio.reports.InputError.__init__:value</code></li>
+<li><code>oabiblio.reports.InputError.__module__:html-source</code></li>
+<li><code>oabiblio.reports.InputError.__module__:latex-source</code></li>
+<li><code>oabiblio.reports.InputError.__module__:source</code></li>
+<li><code>oabiblio.reports.InputError.__module__:value</code></li>
+<li><code>oabiblio.reports.InputError.__new__:html-source</code></li>
+<li><code>oabiblio.reports.InputError.__new__:latex-source</code></li>
+<li><code>oabiblio.reports.InputError.__new__:source</code></li>
+<li><code>oabiblio.reports.InputError.__new__:value</code></li>
+<li><code>oabiblio.reports.InputError.__reduce__:html-source</code></li>
+<li><code>oabiblio.reports.InputError.__reduce__:latex-source</code></li>
+<li><code>oabiblio.reports.InputError.__reduce__:source</code></li>
+<li><code>oabiblio.reports.InputError.__reduce__:value</code></li>
+<li><code>oabiblio.reports.InputError.__reduce_ex__:html-source</code></li>
+<li><code>oabiblio.reports.InputError.__reduce_ex__:latex-source</code></li>
+<li><code>oabiblio.reports.InputError.__reduce_ex__:source</code></li>
+<li><code>oabiblio.reports.InputError.__reduce_ex__:value</code></li>
+<li><code>oabiblio.reports.InputError.__repr__:html-source</code></li>
+<li><code>oabiblio.reports.InputError.__repr__:latex-source</code></li>
+<li><code>oabiblio.reports.InputError.__repr__:source</code></li>
+<li><code>oabiblio.reports.InputError.__repr__:value</code></li>
+<li><code>oabiblio.reports.InputError.__setattr__:html-source</code></li>
+<li><code>oabiblio.reports.InputError.__setattr__:latex-source</code></li>
+<li><code>oabiblio.reports.InputError.__setattr__:source</code></li>
+<li><code>oabiblio.reports.InputError.__setattr__:value</code></li>
+<li><code>oabiblio.reports.InputError.__setstate__:html-source</code></li>
+<li><code>oabiblio.reports.InputError.__setstate__:latex-source</code></li>
+<li><code>oabiblio.reports.InputError.__setstate__:source</code></li>
+<li><code>oabiblio.reports.InputError.__setstate__:value</code></li>
+<li><code>oabiblio.reports.InputError.__sizeof__:html-source</code></li>
+<li><code>oabiblio.reports.InputError.__sizeof__:latex-source</code></li>
+<li><code>oabiblio.reports.InputError.__sizeof__:source</code></li>
+<li><code>oabiblio.reports.InputError.__sizeof__:value</code></li>
+<li><code>oabiblio.reports.InputError.__str__:html-source</code></li>
+<li><code>oabiblio.reports.InputError.__str__:latex-source</code></li>
+<li><code>oabiblio.reports.InputError.__str__:source</code></li>
+<li><code>oabiblio.reports.InputError.__str__:value</code></li>
+<li><code>oabiblio.reports.InputError.__subclasshook__:html-source</code></li>
+<li><code>oabiblio.reports.InputError.__subclasshook__:latex-source</code></li>
+<li><code>oabiblio.reports.InputError.__subclasshook__:source</code></li>
+<li><code>oabiblio.reports.InputError.__subclasshook__:value</code></li>
+<li><code>oabiblio.reports.InputError.__unicode__:html-source</code></li>
+<li><code>oabiblio.reports.InputError.__unicode__:latex-source</code></li>
+<li><code>oabiblio.reports.InputError.__unicode__:source</code></li>
+<li><code>oabiblio.reports.InputError.__unicode__:value</code></li>
+<li><code>oabiblio.reports.InputError.__weakref__:html-source</code></li>
+<li><code>oabiblio.reports.InputError.__weakref__:latex-source</code></li>
+<li><code>oabiblio.reports.InputError.__weakref__:source</code></li>
+<li><code>oabiblio.reports.InputError.__weakref__:value</code></li>
+<li><code>oabiblio.reports.InputError.args:html-source</code></li>
+<li><code>oabiblio.reports.InputError.args:latex-source</code></li>
+<li><code>oabiblio.reports.InputError.args:source</code></li>
+<li><code>oabiblio.reports.InputError.args:value</code></li>
+<li><code>oabiblio.reports.InputError.message:html-source</code></li>
+<li><code>oabiblio.reports.InputError.message:latex-source</code></li>
+<li><code>oabiblio.reports.InputError.message:source</code></li>
+<li><code>oabiblio.reports.InputError.message:value</code></li>
+<li><code>oabiblio.reports.InputError:comments</code></li>
+<li><code>oabiblio.reports.InputError:doc</code></li>
+<li><code>oabiblio.reports.InputError:html-source</code></li>
+<li><code>oabiblio.reports.InputError:latex-source</code></li>
+<li><code>oabiblio.reports.InputError:source</code></li>
+<li><code>oabiblio.reports.InputError:value</code></li>
+<li><code>oabiblio.reports.Journal.__doc__:html-source</code></li>
+<li><code>oabiblio.reports.Journal.__doc__:latex-source</code></li>
+<li><code>oabiblio.reports.Journal.__doc__:source</code></li>
+<li><code>oabiblio.reports.Journal.__doc__:value</code></li>
+<li><code>oabiblio.reports.Journal.__init__:comments</code></li>
+<li><code>oabiblio.reports.Journal.__init__:doc</code></li>
+<li><code>oabiblio.reports.Journal.__init__:html-source</code></li>
+<li><code>oabiblio.reports.Journal.__init__:latex-source</code></li>
+<li><code>oabiblio.reports.Journal.__init__:source</code></li>
+<li><code>oabiblio.reports.Journal.__init__:value</code></li>
+<li><code>oabiblio.reports.Journal.__module__:html-source</code></li>
+<li><code>oabiblio.reports.Journal.__module__:latex-source</code></li>
+<li><code>oabiblio.reports.Journal.__module__:source</code></li>
+<li><code>oabiblio.reports.Journal.__module__:value</code></li>
+<li><code>oabiblio.reports.Journal.__str__:comments</code></li>
+<li><code>oabiblio.reports.Journal.__str__:doc</code></li>
+<li><code>oabiblio.reports.Journal.__str__:html-source</code></li>
+<li><code>oabiblio.reports.Journal.__str__:latex-source</code></li>
+<li><code>oabiblio.reports.Journal.__str__:source</code></li>
+<li><code>oabiblio.reports.Journal.__str__:value</code></li>
+<li><code>oabiblio.reports.Journal.get_licence_from_doaj:comments</code></li>
+<li><code>oabiblio.reports.Journal.get_licence_from_doaj:doc</code></li>
+<li><code>oabiblio.reports.Journal.get_licence_from_doaj:html-source</code></li>
+<li><code>oabiblio.reports.Journal.get_licence_from_doaj:latex-source</code></li>
+<li><code>oabiblio.reports.Journal.get_licence_from_doaj:source</code></li>
+<li><code>oabiblio.reports.Journal.get_licence_from_doaj:value</code></li>
+<li><code>oabiblio.reports.Journal.isCCBY:comments</code></li>
+<li><code>oabiblio.reports.Journal.isCCBY:doc</code></li>
+<li><code>oabiblio.reports.Journal.isCCBY:html-source</code></li>
+<li><code>oabiblio.reports.Journal.isCCBY:latex-source</code></li>
+<li><code>oabiblio.reports.Journal.isCCBY:source</code></li>
+<li><code>oabiblio.reports.Journal.isCCBY:value</code></li>
+<li><code>oabiblio.reports.Journal.isCCBYNC:comments</code></li>
+<li><code>oabiblio.reports.Journal.isCCBYNC:doc</code></li>
+<li><code>oabiblio.reports.Journal.isCCBYNC:html-source</code></li>
+<li><code>oabiblio.reports.Journal.isCCBYNC:latex-source</code></li>
+<li><code>oabiblio.reports.Journal.isCCBYNC:source</code></li>
+<li><code>oabiblio.reports.Journal.isCCBYNC:value</code></li>
+<li><code>oabiblio.reports.Journal:comments</code></li>
+<li><code>oabiblio.reports.Journal:doc</code></li>
+<li><code>oabiblio.reports.Journal:html-source</code></li>
+<li><code>oabiblio.reports.Journal:latex-source</code></li>
+<li><code>oabiblio.reports.Journal:source</code></li>
+<li><code>oabiblio.reports.Journal:value</code></li>
+<li><code>oabiblio.reports.JournalList.__doc__:html-source</code></li>
+<li><code>oabiblio.reports.JournalList.__doc__:latex-source</code></li>
+<li><code>oabiblio.reports.JournalList.__doc__:source</code></li>
+<li><code>oabiblio.reports.JournalList.__doc__:value</code></li>
+<li><code>oabiblio.reports.JournalList.__init__:comments</code></li>
+<li><code>oabiblio.reports.JournalList.__init__:doc</code></li>
+<li><code>oabiblio.reports.JournalList.__init__:html-source</code></li>
+<li><code>oabiblio.reports.JournalList.__init__:latex-source</code></li>
+<li><code>oabiblio.reports.JournalList.__init__:source</code></li>
+<li><code>oabiblio.reports.JournalList.__init__:value</code></li>
+<li><code>oabiblio.reports.JournalList.__module__:html-source</code></li>
+<li><code>oabiblio.reports.JournalList.__module__:latex-source</code></li>
+<li><code>oabiblio.reports.JournalList.__module__:source</code></li>
+<li><code>oabiblio.reports.JournalList.__module__:value</code></li>
+<li><code>oabiblio.reports.JournalList.add_journal:comments</code></li>
+<li><code>oabiblio.reports.JournalList.add_journal:doc</code></li>
+<li><code>oabiblio.reports.JournalList.add_journal:html-source</code></li>
+<li><code>oabiblio.reports.JournalList.add_journal:latex-source</code></li>
+<li><code>oabiblio.reports.JournalList.add_journal:source</code></li>
+<li><code>oabiblio.reports.JournalList.add_journal:value</code></li>
+<li><code>oabiblio.reports.JournalList.filter_by_licence:comments</code></li>
+<li><code>oabiblio.reports.JournalList.filter_by_licence:doc</code></li>
+<li><code>oabiblio.reports.JournalList.filter_by_licence:html-source</code></li>
+<li><code>oabiblio.reports.JournalList.filter_by_licence:latex-source</code></li>
+<li><code>oabiblio.reports.JournalList.filter_by_licence:source</code></li>
+<li><code>oabiblio.reports.JournalList.filter_by_licence:value</code></li>
+<li><code>oabiblio.reports.JournalList.load_from_csv:comments</code></li>
+<li><code>oabiblio.reports.JournalList.load_from_csv:doc</code></li>
+<li><code>oabiblio.reports.JournalList.load_from_csv:html-source</code></li>
+<li><code>oabiblio.reports.JournalList.load_from_csv:latex-source</code></li>
+<li><code>oabiblio.reports.JournalList.load_from_csv:source</code></li>
+<li><code>oabiblio.reports.JournalList.load_from_csv:value</code></li>
+<li><code>oabiblio.reports.JournalList.write_journal_list:comments</code></li>
+<li><code>oabiblio.reports.JournalList.write_journal_list:doc</code></li>
+<li><code>oabiblio.reports.JournalList.write_journal_list:html-source</code></li>
+<li><code>oabiblio.reports.JournalList.write_journal_list:latex-source</code></li>
+<li><code>oabiblio.reports.JournalList.write_journal_list:source</code></li>
+<li><code>oabiblio.reports.JournalList.write_journal_list:value</code></li>
+<li><code>oabiblio.reports.JournalList:comments</code></li>
+<li><code>oabiblio.reports.JournalList:doc</code></li>
+<li><code>oabiblio.reports.JournalList:html-source</code></li>
+<li><code>oabiblio.reports.JournalList:latex-source</code></li>
+<li><code>oabiblio.reports.JournalList:source</code></li>
+<li><code>oabiblio.reports.JournalList:value</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence.__doc__:html-source</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence.__doc__:latex-source</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence.__doc__:source</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence.__doc__:value</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence.__init__:comments</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence.__init__:doc</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence.__init__:html-source</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence.__init__:latex-source</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence.__init__:source</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence.__init__:value</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence.__module__:html-source</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence.__module__:latex-source</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence.__module__:source</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence.__module__:value</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence.add_journal:comments</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence.add_journal:doc</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence.add_journal:html-source</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence.add_journal:latex-source</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence.add_journal:source</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence.add_journal:value</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence.filter_by_licence:comments</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence.filter_by_licence:doc</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence.filter_by_licence:html-source</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence.filter_by_licence:latex-source</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence.filter_by_licence:source</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence.filter_by_licence:value</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence.load_from_csv:comments</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence.load_from_csv:doc</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence.load_from_csv:html-source</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence.load_from_csv:latex-source</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence.load_from_csv:source</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence.load_from_csv:value</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence.populate:comments</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence.populate:doc</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence.populate:html-source</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence.populate:latex-source</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence.populate:source</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence.populate:value</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence.process_journal:comments</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence.process_journal:doc</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence.process_journal:html-source</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence.process_journal:latex-source</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence.process_journal:source</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence.process_journal:value</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence.write_journal_list:comments</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence.write_journal_list:doc</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence.write_journal_list:html-source</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence.write_journal_list:latex-source</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence.write_journal_list:source</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence.write_journal_list:value</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence:comments</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence:doc</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence:html-source</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence:latex-source</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence:source</code></li>
+<li><code>oabiblio.reports.JournalsWithCCLicence:value</code></li>
+<li><code>oabiblio.reports.Publisher.__doc__:html-source</code></li>
+<li><code>oabiblio.reports.Publisher.__doc__:latex-source</code></li>
+<li><code>oabiblio.reports.Publisher.__doc__:source</code></li>
+<li><code>oabiblio.reports.Publisher.__doc__:value</code></li>
+<li><code>oabiblio.reports.Publisher.__init__:comments</code></li>
+<li><code>oabiblio.reports.Publisher.__init__:doc</code></li>
+<li><code>oabiblio.reports.Publisher.__init__:html-source</code></li>
+<li><code>oabiblio.reports.Publisher.__init__:latex-source</code></li>
+<li><code>oabiblio.reports.Publisher.__init__:source</code></li>
+<li><code>oabiblio.reports.Publisher.__init__:value</code></li>
+<li><code>oabiblio.reports.Publisher.__module__:html-source</code></li>
+<li><code>oabiblio.reports.Publisher.__module__:latex-source</code></li>
+<li><code>oabiblio.reports.Publisher.__module__:source</code></li>
+<li><code>oabiblio.reports.Publisher.__module__:value</code></li>
+<li><code>oabiblio.reports.Publisher.add_journal:comments</code></li>
+<li><code>oabiblio.reports.Publisher.add_journal:doc</code></li>
+<li><code>oabiblio.reports.Publisher.add_journal:html-source</code></li>
+<li><code>oabiblio.reports.Publisher.add_journal:latex-source</code></li>
+<li><code>oabiblio.reports.Publisher.add_journal:source</code></li>
+<li><code>oabiblio.reports.Publisher.add_journal:value</code></li>
+<li><code>oabiblio.reports.Publisher.filter_by_licence:comments</code></li>
+<li><code>oabiblio.reports.Publisher.filter_by_licence:doc</code></li>
+<li><code>oabiblio.reports.Publisher.filter_by_licence:html-source</code></li>
+<li><code>oabiblio.reports.Publisher.filter_by_licence:latex-source</code></li>
+<li><code>oabiblio.reports.Publisher.filter_by_licence:source</code></li>
+<li><code>oabiblio.reports.Publisher.filter_by_licence:value</code></li>
+<li><code>oabiblio.reports.Publisher.load_from_csv:comments</code></li>
+<li><code>oabiblio.reports.Publisher.load_from_csv:doc</code></li>
+<li><code>oabiblio.reports.Publisher.load_from_csv:html-source</code></li>
+<li><code>oabiblio.reports.Publisher.load_from_csv:latex-source</code></li>
+<li><code>oabiblio.reports.Publisher.load_from_csv:source</code></li>
+<li><code>oabiblio.reports.Publisher.load_from_csv:value</code></li>
+<li><code>oabiblio.reports.Publisher.write_journal_list:comments</code></li>
+<li><code>oabiblio.reports.Publisher.write_journal_list:doc</code></li>
+<li><code>oabiblio.reports.Publisher.write_journal_list:html-source</code></li>
+<li><code>oabiblio.reports.Publisher.write_journal_list:latex-source</code></li>
+<li><code>oabiblio.reports.Publisher.write_journal_list:source</code></li>
+<li><code>oabiblio.reports.Publisher.write_journal_list:value</code></li>
+<li><code>oabiblio.reports.Publisher:comments</code></li>
+<li><code>oabiblio.reports.Publisher:doc</code></li>
+<li><code>oabiblio.reports.Publisher:html-source</code></li>
+<li><code>oabiblio.reports.Publisher:latex-source</code></li>
+<li><code>oabiblio.reports.Publisher:source</code></li>
+<li><code>oabiblio.reports.Publisher:value</code></li>
+<li><code>oabiblio.reports.__builtins__:html-source</code></li>
+<li><code>oabiblio.reports.__builtins__:latex-source</code></li>
+<li><code>oabiblio.reports.__builtins__:source</code></li>
+<li><code>oabiblio.reports.__builtins__:value</code></li>
+<li><code>oabiblio.reports.__doc__:html-source</code></li>
+<li><code>oabiblio.reports.__doc__:latex-source</code></li>
+<li><code>oabiblio.reports.__doc__:source</code></li>
+<li><code>oabiblio.reports.__doc__:value</code></li>
+<li><code>oabiblio.reports.__file__:html-source</code></li>
+<li><code>oabiblio.reports.__file__:latex-source</code></li>
+<li><code>oabiblio.reports.__file__:source</code></li>
+<li><code>oabiblio.reports.__file__:value</code></li>
+<li><code>oabiblio.reports.__name__:html-source</code></li>
+<li><code>oabiblio.reports.__name__:latex-source</code></li>
+<li><code>oabiblio.reports.__name__:source</code></li>
+<li><code>oabiblio.reports.__name__:value</code></li>
+<li><code>oabiblio.reports.__package__:html-source</code></li>
+<li><code>oabiblio.reports.__package__:latex-source</code></li>
+<li><code>oabiblio.reports.__package__:source</code></li>
+<li><code>oabiblio.reports.__package__:value</code></li>
+<li><code>oabiblio.reports.ccby_numbers:comments</code></li>
+<li><code>oabiblio.reports.ccby_numbers:doc</code></li>
+<li><code>oabiblio.reports.ccby_numbers:html-source</code></li>
+<li><code>oabiblio.reports.ccby_numbers:latex-source</code></li>
+<li><code>oabiblio.reports.ccby_numbers:source</code></li>
+<li><code>oabiblio.reports.ccby_numbers:value</code></li>
+<li><code>oabiblio.reports.csv:html-source</code></li>
+<li><code>oabiblio.reports.csv:latex-source</code></li>
+<li><code>oabiblio.reports.csv:source</code></li>
+<li><code>oabiblio.reports.csv:value</code></li>
+<li><code>oabiblio.reports.re:html-source</code></li>
+<li><code>oabiblio.reports.re:latex-source</code></li>
+<li><code>oabiblio.reports.re:source</code></li>
+<li><code>oabiblio.reports.re:value</code></li>
+<li><code>oabiblio.reports.urllib2:html-source</code></li>
+<li><code>oabiblio.reports.urllib2:latex-source</code></li>
+<li><code>oabiblio.reports.urllib2:source</code></li>
+<li><code>oabiblio.reports.urllib2:value</code></li>
+<li><code>oabiblio.reports:html-source</code></li>
+<li><code>oabiblio.reports:latex-source</code></li>
+<li><code>oabiblio.reports:source</code></li>
+<li><code>oabiblio.reports:value</code></li>
+<li><code>oabiblio.updates.BeautifulSoup:html-source</code></li>
+<li><code>oabiblio.updates.BeautifulSoup:latex-source</code></li>
+<li><code>oabiblio.updates.BeautifulSoup:source</code></li>
+<li><code>oabiblio.updates.BeautifulSoup:value</code></li>
+<li><code>oabiblio.updates.InputError.__class__:html-source</code></li>
+<li><code>oabiblio.updates.InputError.__class__:latex-source</code></li>
+<li><code>oabiblio.updates.InputError.__class__:source</code></li>
+<li><code>oabiblio.updates.InputError.__class__:value</code></li>
+<li><code>oabiblio.updates.InputError.__delattr__:html-source</code></li>
+<li><code>oabiblio.updates.InputError.__delattr__:latex-source</code></li>
+<li><code>oabiblio.updates.InputError.__delattr__:source</code></li>
+<li><code>oabiblio.updates.InputError.__delattr__:value</code></li>
+<li><code>oabiblio.updates.InputError.__dict__:html-source</code></li>
+<li><code>oabiblio.updates.InputError.__dict__:latex-source</code></li>
+<li><code>oabiblio.updates.InputError.__dict__:source</code></li>
+<li><code>oabiblio.updates.InputError.__dict__:value</code></li>
+<li><code>oabiblio.updates.InputError.__doc__:html-source</code></li>
+<li><code>oabiblio.updates.InputError.__doc__:latex-source</code></li>
+<li><code>oabiblio.updates.InputError.__doc__:source</code></li>
+<li><code>oabiblio.updates.InputError.__doc__:value</code></li>
+<li><code>oabiblio.updates.InputError.__format__:html-source</code></li>
+<li><code>oabiblio.updates.InputError.__format__:latex-source</code></li>
+<li><code>oabiblio.updates.InputError.__format__:source</code></li>
+<li><code>oabiblio.updates.InputError.__format__:value</code></li>
+<li><code>oabiblio.updates.InputError.__getattribute__:html-source</code></li>
+<li><code>oabiblio.updates.InputError.__getattribute__:latex-source</code></li>
+<li><code>oabiblio.updates.InputError.__getattribute__:source</code></li>
+<li><code>oabiblio.updates.InputError.__getattribute__:value</code></li>
+<li><code>oabiblio.updates.InputError.__getitem__:html-source</code></li>
+<li><code>oabiblio.updates.InputError.__getitem__:latex-source</code></li>
+<li><code>oabiblio.updates.InputError.__getitem__:source</code></li>
+<li><code>oabiblio.updates.InputError.__getitem__:value</code></li>
+<li><code>oabiblio.updates.InputError.__getslice__:html-source</code></li>
+<li><code>oabiblio.updates.InputError.__getslice__:latex-source</code></li>
+<li><code>oabiblio.updates.InputError.__getslice__:source</code></li>
+<li><code>oabiblio.updates.InputError.__getslice__:value</code></li>
+<li><code>oabiblio.updates.InputError.__hash__:html-source</code></li>
+<li><code>oabiblio.updates.InputError.__hash__:latex-source</code></li>
+<li><code>oabiblio.updates.InputError.__hash__:source</code></li>
+<li><code>oabiblio.updates.InputError.__hash__:value</code></li>
+<li><code>oabiblio.updates.InputError.__init__:html-source</code></li>
+<li><code>oabiblio.updates.InputError.__init__:latex-source</code></li>
+<li><code>oabiblio.updates.InputError.__init__:source</code></li>
+<li><code>oabiblio.updates.InputError.__init__:value</code></li>
+<li><code>oabiblio.updates.InputError.__module__:html-source</code></li>
+<li><code>oabiblio.updates.InputError.__module__:latex-source</code></li>
+<li><code>oabiblio.updates.InputError.__module__:source</code></li>
+<li><code>oabiblio.updates.InputError.__module__:value</code></li>
+<li><code>oabiblio.updates.InputError.__new__:html-source</code></li>
+<li><code>oabiblio.updates.InputError.__new__:latex-source</code></li>
+<li><code>oabiblio.updates.InputError.__new__:source</code></li>
+<li><code>oabiblio.updates.InputError.__new__:value</code></li>
+<li><code>oabiblio.updates.InputError.__reduce__:html-source</code></li>
+<li><code>oabiblio.updates.InputError.__reduce__:latex-source</code></li>
+<li><code>oabiblio.updates.InputError.__reduce__:source</code></li>
+<li><code>oabiblio.updates.InputError.__reduce__:value</code></li>
+<li><code>oabiblio.updates.InputError.__reduce_ex__:html-source</code></li>
+<li><code>oabiblio.updates.InputError.__reduce_ex__:latex-source</code></li>
+<li><code>oabiblio.updates.InputError.__reduce_ex__:source</code></li>
+<li><code>oabiblio.updates.InputError.__reduce_ex__:value</code></li>
+<li><code>oabiblio.updates.InputError.__repr__:html-source</code></li>
+<li><code>oabiblio.updates.InputError.__repr__:latex-source</code></li>
+<li><code>oabiblio.updates.InputError.__repr__:source</code></li>
+<li><code>oabiblio.updates.InputError.__repr__:value</code></li>
+<li><code>oabiblio.updates.InputError.__setattr__:html-source</code></li>
+<li><code>oabiblio.updates.InputError.__setattr__:latex-source</code></li>
+<li><code>oabiblio.updates.InputError.__setattr__:source</code></li>
+<li><code>oabiblio.updates.InputError.__setattr__:value</code></li>
+<li><code>oabiblio.updates.InputError.__setstate__:html-source</code></li>
+<li><code>oabiblio.updates.InputError.__setstate__:latex-source</code></li>
+<li><code>oabiblio.updates.InputError.__setstate__:source</code></li>
+<li><code>oabiblio.updates.InputError.__setstate__:value</code></li>
+<li><code>oabiblio.updates.InputError.__sizeof__:html-source</code></li>
+<li><code>oabiblio.updates.InputError.__sizeof__:latex-source</code></li>
+<li><code>oabiblio.updates.InputError.__sizeof__:source</code></li>
+<li><code>oabiblio.updates.InputError.__sizeof__:value</code></li>
+<li><code>oabiblio.updates.InputError.__str__:html-source</code></li>
+<li><code>oabiblio.updates.InputError.__str__:latex-source</code></li>
+<li><code>oabiblio.updates.InputError.__str__:source</code></li>
+<li><code>oabiblio.updates.InputError.__str__:value</code></li>
+<li><code>oabiblio.updates.InputError.__subclasshook__:html-source</code></li>
+<li><code>oabiblio.updates.InputError.__subclasshook__:latex-source</code></li>
+<li><code>oabiblio.updates.InputError.__subclasshook__:source</code></li>
+<li><code>oabiblio.updates.InputError.__subclasshook__:value</code></li>
+<li><code>oabiblio.updates.InputError.__unicode__:html-source</code></li>
+<li><code>oabiblio.updates.InputError.__unicode__:latex-source</code></li>
+<li><code>oabiblio.updates.InputError.__unicode__:source</code></li>
+<li><code>oabiblio.updates.InputError.__unicode__:value</code></li>
+<li><code>oabiblio.updates.InputError.__weakref__:html-source</code></li>
+<li><code>oabiblio.updates.InputError.__weakref__:latex-source</code></li>
+<li><code>oabiblio.updates.InputError.__weakref__:source</code></li>
+<li><code>oabiblio.updates.InputError.__weakref__:value</code></li>
+<li><code>oabiblio.updates.InputError.args:html-source</code></li>
+<li><code>oabiblio.updates.InputError.args:latex-source</code></li>
+<li><code>oabiblio.updates.InputError.args:source</code></li>
+<li><code>oabiblio.updates.InputError.args:value</code></li>
+<li><code>oabiblio.updates.InputError.message:html-source</code></li>
+<li><code>oabiblio.updates.InputError.message:latex-source</code></li>
+<li><code>oabiblio.updates.InputError.message:source</code></li>
+<li><code>oabiblio.updates.InputError.message:value</code></li>
+<li><code>oabiblio.updates.InputError:comments</code></li>
+<li><code>oabiblio.updates.InputError:doc</code></li>
+<li><code>oabiblio.updates.InputError:html-source</code></li>
+<li><code>oabiblio.updates.InputError:latex-source</code></li>
+<li><code>oabiblio.updates.InputError:source</code></li>
+<li><code>oabiblio.updates.InputError:value</code></li>
+<li><code>oabiblio.updates.Journal.__doc__:html-source</code></li>
+<li><code>oabiblio.updates.Journal.__doc__:latex-source</code></li>
+<li><code>oabiblio.updates.Journal.__doc__:source</code></li>
+<li><code>oabiblio.updates.Journal.__doc__:value</code></li>
+<li><code>oabiblio.updates.Journal.__init__:comments</code></li>
+<li><code>oabiblio.updates.Journal.__init__:doc</code></li>
+<li><code>oabiblio.updates.Journal.__init__:html-source</code></li>
+<li><code>oabiblio.updates.Journal.__init__:latex-source</code></li>
+<li><code>oabiblio.updates.Journal.__init__:source</code></li>
+<li><code>oabiblio.updates.Journal.__init__:value</code></li>
+<li><code>oabiblio.updates.Journal.__module__:html-source</code></li>
+<li><code>oabiblio.updates.Journal.__module__:latex-source</code></li>
+<li><code>oabiblio.updates.Journal.__module__:source</code></li>
+<li><code>oabiblio.updates.Journal.__module__:value</code></li>
+<li><code>oabiblio.updates.Journal.__str__:comments</code></li>
+<li><code>oabiblio.updates.Journal.__str__:doc</code></li>
+<li><code>oabiblio.updates.Journal.__str__:html-source</code></li>
+<li><code>oabiblio.updates.Journal.__str__:latex-source</code></li>
+<li><code>oabiblio.updates.Journal.__str__:source</code></li>
+<li><code>oabiblio.updates.Journal.__str__:value</code></li>
+<li><code>oabiblio.updates.Journal.get_licence_from_doaj:comments</code></li>
+<li><code>oabiblio.updates.Journal.get_licence_from_doaj:doc</code></li>
+<li><code>oabiblio.updates.Journal.get_licence_from_doaj:html-source</code></li>
+<li><code>oabiblio.updates.Journal.get_licence_from_doaj:latex-source</code></li>
+<li><code>oabiblio.updates.Journal.get_licence_from_doaj:source</code></li>
+<li><code>oabiblio.updates.Journal.get_licence_from_doaj:value</code></li>
+<li><code>oabiblio.updates.Journal.isCCBY:comments</code></li>
+<li><code>oabiblio.updates.Journal.isCCBY:doc</code></li>
+<li><code>oabiblio.updates.Journal.isCCBY:html-source</code></li>
+<li><code>oabiblio.updates.Journal.isCCBY:latex-source</code></li>
+<li><code>oabiblio.updates.Journal.isCCBY:source</code></li>
+<li><code>oabiblio.updates.Journal.isCCBY:value</code></li>
+<li><code>oabiblio.updates.Journal.isCCBYNC:comments</code></li>
+<li><code>oabiblio.updates.Journal.isCCBYNC:doc</code></li>
+<li><code>oabiblio.updates.Journal.isCCBYNC:html-source</code></li>
+<li><code>oabiblio.updates.Journal.isCCBYNC:latex-source</code></li>
+<li><code>oabiblio.updates.Journal.isCCBYNC:source</code></li>
+<li><code>oabiblio.updates.Journal.isCCBYNC:value</code></li>
+<li><code>oabiblio.updates.Journal:comments</code></li>
+<li><code>oabiblio.updates.Journal:doc</code></li>
+<li><code>oabiblio.updates.Journal:html-source</code></li>
+<li><code>oabiblio.updates.Journal:latex-source</code></li>
+<li><code>oabiblio.updates.Journal:source</code></li>
+<li><code>oabiblio.updates.Journal:value</code></li>
+<li><code>oabiblio.updates.JournalList.__doc__:html-source</code></li>
+<li><code>oabiblio.updates.JournalList.__doc__:latex-source</code></li>
+<li><code>oabiblio.updates.JournalList.__doc__:source</code></li>
+<li><code>oabiblio.updates.JournalList.__doc__:value</code></li>
+<li><code>oabiblio.updates.JournalList.__init__:comments</code></li>
+<li><code>oabiblio.updates.JournalList.__init__:doc</code></li>
+<li><code>oabiblio.updates.JournalList.__init__:html-source</code></li>
+<li><code>oabiblio.updates.JournalList.__init__:latex-source</code></li>
+<li><code>oabiblio.updates.JournalList.__init__:source</code></li>
+<li><code>oabiblio.updates.JournalList.__init__:value</code></li>
+<li><code>oabiblio.updates.JournalList.__module__:html-source</code></li>
+<li><code>oabiblio.updates.JournalList.__module__:latex-source</code></li>
+<li><code>oabiblio.updates.JournalList.__module__:source</code></li>
+<li><code>oabiblio.updates.JournalList.__module__:value</code></li>
+<li><code>oabiblio.updates.JournalList.add_journal:comments</code></li>
+<li><code>oabiblio.updates.JournalList.add_journal:doc</code></li>
+<li><code>oabiblio.updates.JournalList.add_journal:html-source</code></li>
+<li><code>oabiblio.updates.JournalList.add_journal:latex-source</code></li>
+<li><code>oabiblio.updates.JournalList.add_journal:source</code></li>
+<li><code>oabiblio.updates.JournalList.add_journal:value</code></li>
+<li><code>oabiblio.updates.JournalList.filter_by_licence:comments</code></li>
+<li><code>oabiblio.updates.JournalList.filter_by_licence:doc</code></li>
+<li><code>oabiblio.updates.JournalList.filter_by_licence:html-source</code></li>
+<li><code>oabiblio.updates.JournalList.filter_by_licence:latex-source</code></li>
+<li><code>oabiblio.updates.JournalList.filter_by_licence:source</code></li>
+<li><code>oabiblio.updates.JournalList.filter_by_licence:value</code></li>
+<li><code>oabiblio.updates.JournalList.load_from_csv:comments</code></li>
+<li><code>oabiblio.updates.JournalList.load_from_csv:doc</code></li>
+<li><code>oabiblio.updates.JournalList.load_from_csv:html-source</code></li>
+<li><code>oabiblio.updates.JournalList.load_from_csv:latex-source</code></li>
+<li><code>oabiblio.updates.JournalList.load_from_csv:source</code></li>
+<li><code>oabiblio.updates.JournalList.load_from_csv:value</code></li>
+<li><code>oabiblio.updates.JournalList.write_journal_list:comments</code></li>
+<li><code>oabiblio.updates.JournalList.write_journal_list:doc</code></li>
+<li><code>oabiblio.updates.JournalList.write_journal_list:html-source</code></li>
+<li><code>oabiblio.updates.JournalList.write_journal_list:latex-source</code></li>
+<li><code>oabiblio.updates.JournalList.write_journal_list:source</code></li>
+<li><code>oabiblio.updates.JournalList.write_journal_list:value</code></li>
+<li><code>oabiblio.updates.JournalList:comments</code></li>
+<li><code>oabiblio.updates.JournalList:doc</code></li>
+<li><code>oabiblio.updates.JournalList:html-source</code></li>
+<li><code>oabiblio.updates.JournalList:latex-source</code></li>
+<li><code>oabiblio.updates.JournalList:source</code></li>
+<li><code>oabiblio.updates.JournalList:value</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence.__doc__:html-source</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence.__doc__:latex-source</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence.__doc__:source</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence.__doc__:value</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence.__init__:comments</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence.__init__:doc</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence.__init__:html-source</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence.__init__:latex-source</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence.__init__:source</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence.__init__:value</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence.__module__:html-source</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence.__module__:latex-source</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence.__module__:source</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence.__module__:value</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence.add_journal:comments</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence.add_journal:doc</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence.add_journal:html-source</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence.add_journal:latex-source</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence.add_journal:source</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence.add_journal:value</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence.filter_by_licence:comments</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence.filter_by_licence:doc</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence.filter_by_licence:html-source</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence.filter_by_licence:latex-source</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence.filter_by_licence:source</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence.filter_by_licence:value</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence.load_from_csv:comments</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence.load_from_csv:doc</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence.load_from_csv:html-source</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence.load_from_csv:latex-source</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence.load_from_csv:source</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence.load_from_csv:value</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence.populate:comments</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence.populate:doc</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence.populate:html-source</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence.populate:latex-source</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence.populate:source</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence.populate:value</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence.process_journal:comments</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence.process_journal:doc</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence.process_journal:html-source</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence.process_journal:latex-source</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence.process_journal:source</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence.process_journal:value</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence.write_journal_list:comments</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence.write_journal_list:doc</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence.write_journal_list:html-source</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence.write_journal_list:latex-source</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence.write_journal_list:source</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence.write_journal_list:value</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence:comments</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence:doc</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence:html-source</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence:latex-source</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence:source</code></li>
+<li><code>oabiblio.updates.JournalsWithCCLicence:value</code></li>
+<li><code>oabiblio.updates.Publisher.__doc__:html-source</code></li>
+<li><code>oabiblio.updates.Publisher.__doc__:latex-source</code></li>
+<li><code>oabiblio.updates.Publisher.__doc__:source</code></li>
+<li><code>oabiblio.updates.Publisher.__doc__:value</code></li>
+<li><code>oabiblio.updates.Publisher.__init__:comments</code></li>
+<li><code>oabiblio.updates.Publisher.__init__:doc</code></li>
+<li><code>oabiblio.updates.Publisher.__init__:html-source</code></li>
+<li><code>oabiblio.updates.Publisher.__init__:latex-source</code></li>
+<li><code>oabiblio.updates.Publisher.__init__:source</code></li>
+<li><code>oabiblio.updates.Publisher.__init__:value</code></li>
+<li><code>oabiblio.updates.Publisher.__module__:html-source</code></li>
+<li><code>oabiblio.updates.Publisher.__module__:latex-source</code></li>
+<li><code>oabiblio.updates.Publisher.__module__:source</code></li>
+<li><code>oabiblio.updates.Publisher.__module__:value</code></li>
+<li><code>oabiblio.updates.Publisher.add_journal:comments</code></li>
+<li><code>oabiblio.updates.Publisher.add_journal:doc</code></li>
+<li><code>oabiblio.updates.Publisher.add_journal:html-source</code></li>
+<li><code>oabiblio.updates.Publisher.add_journal:latex-source</code></li>
+<li><code>oabiblio.updates.Publisher.add_journal:source</code></li>
+<li><code>oabiblio.updates.Publisher.add_journal:value</code></li>
+<li><code>oabiblio.updates.Publisher.filter_by_licence:comments</code></li>
+<li><code>oabiblio.updates.Publisher.filter_by_licence:doc</code></li>
+<li><code>oabiblio.updates.Publisher.filter_by_licence:html-source</code></li>
+<li><code>oabiblio.updates.Publisher.filter_by_licence:latex-source</code></li>
+<li><code>oabiblio.updates.Publisher.filter_by_licence:source</code></li>
+<li><code>oabiblio.updates.Publisher.filter_by_licence:value</code></li>
+<li><code>oabiblio.updates.Publisher.load_from_csv:comments</code></li>
+<li><code>oabiblio.updates.Publisher.load_from_csv:doc</code></li>
+<li><code>oabiblio.updates.Publisher.load_from_csv:html-source</code></li>
+<li><code>oabiblio.updates.Publisher.load_from_csv:latex-source</code></li>
+<li><code>oabiblio.updates.Publisher.load_from_csv:source</code></li>
+<li><code>oabiblio.updates.Publisher.load_from_csv:value</code></li>
+<li><code>oabiblio.updates.Publisher.write_journal_list:comments</code></li>
+<li><code>oabiblio.updates.Publisher.write_journal_list:doc</code></li>
+<li><code>oabiblio.updates.Publisher.write_journal_list:html-source</code></li>
+<li><code>oabiblio.updates.Publisher.write_journal_list:latex-source</code></li>
+<li><code>oabiblio.updates.Publisher.write_journal_list:source</code></li>
+<li><code>oabiblio.updates.Publisher.write_journal_list:value</code></li>
+<li><code>oabiblio.updates.Publisher:comments</code></li>
+<li><code>oabiblio.updates.Publisher:doc</code></li>
+<li><code>oabiblio.updates.Publisher:html-source</code></li>
+<li><code>oabiblio.updates.Publisher:latex-source</code></li>
+<li><code>oabiblio.updates.Publisher:source</code></li>
+<li><code>oabiblio.updates.Publisher:value</code></li>
+<li><code>oabiblio.updates.__builtins__:html-source</code></li>
+<li><code>oabiblio.updates.__builtins__:latex-source</code></li>
+<li><code>oabiblio.updates.__builtins__:source</code></li>
+<li><code>oabiblio.updates.__builtins__:value</code></li>
+<li><code>oabiblio.updates.__doc__:html-source</code></li>
+<li><code>oabiblio.updates.__doc__:latex-source</code></li>
+<li><code>oabiblio.updates.__doc__:source</code></li>
+<li><code>oabiblio.updates.__doc__:value</code></li>
+<li><code>oabiblio.updates.__file__:html-source</code></li>
+<li><code>oabiblio.updates.__file__:latex-source</code></li>
+<li><code>oabiblio.updates.__file__:source</code></li>
+<li><code>oabiblio.updates.__file__:value</code></li>
+<li><code>oabiblio.updates.__name__:html-source</code></li>
+<li><code>oabiblio.updates.__name__:latex-source</code></li>
+<li><code>oabiblio.updates.__name__:source</code></li>
+<li><code>oabiblio.updates.__name__:value</code></li>
+<li><code>oabiblio.updates.__package__:html-source</code></li>
+<li><code>oabiblio.updates.__package__:latex-source</code></li>
+<li><code>oabiblio.updates.__package__:source</code></li>
+<li><code>oabiblio.updates.__package__:value</code></li>
+<li><code>oabiblio.updates.cc_journal:comments</code></li>
+<li><code>oabiblio.updates.cc_journal:doc</code></li>
+<li><code>oabiblio.updates.cc_journal:html-source</code></li>
+<li><code>oabiblio.updates.cc_journal:latex-source</code></li>
+<li><code>oabiblio.updates.cc_journal:source</code></li>
+<li><code>oabiblio.updates.cc_journal:value</code></li>
+<li><code>oabiblio.updates.crossref:comments</code></li>
+<li><code>oabiblio.updates.crossref:doc</code></li>
+<li><code>oabiblio.updates.crossref:html-source</code></li>
+<li><code>oabiblio.updates.crossref:latex-source</code></li>
+<li><code>oabiblio.updates.crossref:source</code></li>
+<li><code>oabiblio.updates.crossref:value</code></li>
+<li><code>oabiblio.updates.csv:html-source</code></li>
+<li><code>oabiblio.updates.csv:latex-source</code></li>
+<li><code>oabiblio.updates.csv:source</code></li>
+<li><code>oabiblio.updates.csv:value</code></li>
+<li><code>oabiblio.updates.re:html-source</code></li>
+<li><code>oabiblio.updates.re:latex-source</code></li>
+<li><code>oabiblio.updates.re:source</code></li>
+<li><code>oabiblio.updates.re:value</code></li>
+<li><code>oabiblio.updates.urllib2:html-source</code></li>
+<li><code>oabiblio.updates.urllib2:latex-source</code></li>
+<li><code>oabiblio.updates.urllib2:source</code></li>
+<li><code>oabiblio.updates.urllib2:value</code></li>
+<li><code>oabiblio.updates:html-source</code></li>
+<li><code>oabiblio.updates:latex-source</code></li>
+<li><code>oabiblio.updates:source</code></li>
+<li><code>oabiblio.updates:value</code></li>
+</ul>
+        </div>
+    </div>
+    </body>
+</html>

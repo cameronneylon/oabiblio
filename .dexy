@@ -1,0 +1,8 @@
+{
+    "README" : {},
+    "@modules.txt|pydoc" : { "contents" : "oabiblio" },
+    "*.sh|idio" : {},
+    "*.sh|idio|shint|pyg" : {},
+    "*.py|idio" : {},
+    "*.md|jinjajit|markdown|easyhtml" : { "allinputs" : true }
+}
