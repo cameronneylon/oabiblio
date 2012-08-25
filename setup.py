@@ -16,7 +16,8 @@ setup(
         install_requires=[
             'Markdown',
             'jinja2',
-            'python-modargs>=1.4'
+            'python-modargs>=1.4',
+            'BeautifulSoup'
             ],
         name='oabiblio',
         packages=find_packages(),
