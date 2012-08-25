@@ -1,6 +1,8 @@
 from modargs import args
 import sys
 
+from oabiblio.updates import *
+
 MOD = sys.modules[__name__]
 PROG = 'oacensus'
 DEFAULT_COMMAND = 'report'
@@ -9,12 +11,13 @@ def run():
     args.parse_and_run_command(sys.argv[1:], MOD, default_command=DEFAULT_COMMAND)
 
 def update_command(
-        foo='bar' # This is a command line argument
+        years="11,12" # comma separated list of years
         ):
     """
     Downloads the latest source data files from sources.
     """
-    print "this is the update command! foo is %s" % foo
+    years = years.split(",")
+    crossref(years)
 
 def report_command():
     """
