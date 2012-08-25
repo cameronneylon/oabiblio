@@ -99,12 +99,18 @@ class PubMedParser():
             for row in reader:
                 datum = {'name': row['name']}
                 for year in self.years:
-                    year_header = "Year-" + year
-                    datum[year_header] = self.fetch_journal_data(datum['name'], year)
+                    #Convert two-digit years to four-digit years
+                    if year.__len__() == 2:
+                        year = "20" + year
 
-    def fetch_journal_data(self, journal, year):
+                    year_header = "Year-" + year
+                    datum[year_header] = self.fetch_journal_data(row['issn'], year)
+
+    def fetch_journal_data(self, issn, year):
         """Fetches the number of articles for a specific journal and year"""
-        print "Fetching data for journal " + journal + " and year " + year
+        fixed_issn = issn[:4] + "-" + issn[:-4]
+        query = "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=%(issn)s[Journal]+AND+%(year)s[pdat]" % {'issn' : fixed_issn, 'year': year}
+        print query
 
     def write_file(self, filename=None):
         """Takes our populated data and writes it to a csv file"""
