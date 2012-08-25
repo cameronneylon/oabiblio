@@ -1,4 +1,6 @@
-from oabiblio import *
+from oabiblio.journal import Journal
+from oabiblio.journal_list import *
+from oabiblio.parser import *
 import unittest
 import random
 

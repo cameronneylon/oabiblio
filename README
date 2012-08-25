@@ -1,0 +1,32 @@
+oabiblio: A python library for obtaining data on levels of
+open access adoption
+
+Public Domain Waiver:
+To the extent possible under law, Cameron Neylon has waived all 
+copyright and related or neighboring rights to lablogpost.py
+This work is published from United Kingdom.
+
+See http://creativecommons.org/publicdomain/zero/1.0/
+
+Dependencies: The application requires a range of modules from the
+Python 2.7 standard library including urllib, urllib2, re and csv.
+Python is Copyright 2001-2012 Python Software Foundation
+and used here under the PSF Licence for Python 2.7.2
+
+This code additionally depends on the BeautifulSoupt parsing library.
+Development was done using version 3 of this library but it should
+work with version 4.
+
+Data Sources: The library uses sources such as PubMed and CrossRef
+alongside the Directory of Open Access Journals to obtain data on
+publications and licensing.
+
+### Installation
+
+To install from source run:
+"sudo pip install -e ." from within your checkout of this repo.
+
+You should then be able to run the 'oacensus' command on your command line.
+
+Or preferably install this using "pip install -e ." from inside a virtualenv
+http://www.virtualenv.org/en/latest/index.html
