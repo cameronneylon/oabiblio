@@ -2,6 +2,7 @@ from modargs import args
 from oabiblio.updates import *
 import oabiblio.reports
 import sys
+import os
 
 MOD = sys.modules[__name__]
 PROG = 'oacensus'
@@ -36,11 +37,35 @@ def update_command(
 
     print "updating is complete!"
 
-def report_command():
+def report_command(
+    directory='oacensus-report', # Directory (relative to current working dir) in which report files will be written.
+    fmt='all' # Format for report. Options are 'csv' or 'html'. The 'all' option generates all formats.
+        ):
     """
     Generates the report.
     """
-    print oabiblio.reports.ccby_numbers_html()
+    if not os.path.exists(directory):
+        print "Creating directory '%s'" % directory
+        os.makedirs(directory)
+
+    def do_csv():
+        csv_filename = os.path.join(directory, 'ccby.csv')
+        oabiblio.reports.ccby_numbers_csv(csv_filename)
+
+    def do_html():
+        html_filename = os.path.join(directory, 'index.html')
+        oabiblio.reports.ccby_numbers_html(html_filename)
+
+    if fmt == 'csv':
+        do_csv()
+    elif fmt == 'html':
+        do_html()
+    elif fmt == 'all':
+        do_csv()
+        do_html()
+    else:
+        sys.stderr.write("Invalid report format '%s'" % fmt)
+        sys.exit(1)
 
 def help_command(on=False):
     args.help_command(PROG, MOD, DEFAULT_COMMAND, on)

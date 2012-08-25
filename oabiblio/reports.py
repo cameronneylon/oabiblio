@@ -72,7 +72,7 @@ def ccby_numbers():
                      'plos' : plos_accumulator})
     return data
 
-def ccby_numbers_csv(filename="crossref_cydeps_by_license.csv"):
+def ccby_numbers_csv(filename):
     data = ccby_numbers()
     with open(filename, 'w') as f:
         writer = csv.DictWriter(f, fieldnames = ['quarter', 'total_deposits', 'ccby_deposits',
@@ -81,14 +81,17 @@ def ccby_numbers_csv(filename="crossref_cydeps_by_license.csv"):
         for row in data:
             writer.writerow(row)
 
-def ccby_numbers_md():
+def ccby_numbers_md(parent_dir):
     data = ccby_numbers()
-    graph_svg(data, 'title of graph', 'chart.svg')
+    svg_filename = os.path.join(parent_dir, 'chart.svg')
+    graph_svg(data, 'title of graph', svg_filename)
     return oabiblio.html_reporting.generate("ccby.md", {'data' : data })
 
-def ccby_numbers_html():
-    md = ccby_numbers_md()
-    return oabiblio.html_reporting.convert_markdown(md)
+def ccby_numbers_html(filename):
+    parent_dir = os.path.dirname(filename)
+    md = ccby_numbers_md(parent_dir)
+    with open(filename, "wb") as f:
+        f.write(oabiblio.html_reporting.convert_markdown(md))
 
 import pygal
 def graph_svg(data, title, filename):
