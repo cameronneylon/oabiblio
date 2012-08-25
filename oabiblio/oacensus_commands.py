@@ -24,7 +24,7 @@ def update_command(
 
     if pubmed:
         print "Running pubmed"
-        update_pubmed()
+        update_pubmed(years)
 
     if crossref:
         # TODO update crossref
