@@ -30,3 +30,9 @@ You should then be able to run the 'oacensus' command on your command line.
 
 Or preferably install this using "pip install -e ." from inside a virtualenv
 http://www.virtualenv.org/en/latest/index.html
+
+### Command Line Interface
+
+The 'oacensus' command generates the report and downloads updates.
+
+Type 'oacensus help' for more information on how to use this command.
