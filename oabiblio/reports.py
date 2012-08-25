@@ -70,11 +70,3 @@ def ccby_numbers():
         writer.writeheader()
         for row in data:
             writer.writerow(row)
-
-
-
-if __name__ == '__main__':
-    print "running reports..."
-    cc_journal()
-    ccby_numbers()
-    crossref()
