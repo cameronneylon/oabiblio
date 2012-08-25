@@ -23,12 +23,12 @@ def ccby_numbers():
     data = []
 
     for quarter in ['Q106', 'Q206', 'Q306', 'Q406',
-                    'Q107', 'Q207', 'Q307', 'Q407',
-                    'Q108', 'Q208', 'Q308', 'Q408',
-                    'Q109', 'Q209',
-                    'Q110', 'Q210', 'Q310', 'Q410',
-                    'Q111', 'Q211', 'Q311', 'Q411',
-                    'Q112', 'Q212']:
+            'Q107', 'Q207', 'Q307', 'Q407',
+            'Q108', 'Q208', 'Q308', 'Q408',
+            'Q109', 'Q209',
+            'Q110', 'Q210', 'Q310', 'Q410',
+            'Q111', 'Q211', 'Q311', 'Q411',
+            'Q112', 'Q212']:
 
         dep_records = []
         quarter_csv_file = os.path.join("data", "%s.csv" % quarter)
@@ -83,8 +83,29 @@ def ccby_numbers_csv(filename="crossref_cydeps_by_license.csv"):
 
 def ccby_numbers_md():
     data = ccby_numbers()
+    graph_svg(data, 'title of graph', 'chart.svg')
     return oabiblio.html_reporting.generate("ccby.md", {'data' : data })
 
 def ccby_numbers_html():
     md = ccby_numbers_md()
     return oabiblio.html_reporting.convert_markdown(md)
+
+import pygal
+def graph_svg(data, title, filename):
+    # rearrange the data
+    quarters = [row['quarter'] for row in data]
+    total_deposits = [row['total_deposits'] for row in data]
+    ccby = [row['ccby_deposits'] for row in data]
+    ccbync = [row['ccbync_deposits'] for row in data]
+    ccbyncsa = [row['ccbyncsa_deposits'] for row in data]
+    plos = [row['plos'] for row in data]
+
+    # make the graph
+    line_chart = pygal.StackedLine(fill=True)
+    line_chart.title = title
+    line_chart.x_labels = quarters
+    line_chart.add('CCBY', ccby)
+    line_chart.add('CCBYNC', ccbync)
+    line_chart.add('CCBYNCSA', ccbyncsa)
+    line_chart.add('PLOS', plos)
+    return line_chart.render_to_file(filename)

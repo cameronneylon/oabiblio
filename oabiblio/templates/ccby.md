@@ -8,3 +8,7 @@ one plus one is {{ 1+1 }}.
 <tr><td>{{ row.quarter }}</td><td>{{ row.total_deposits }}</tr></tr>
 {% endfor -%}
 </table>
+
+Here is a chart:
+
+<img src="chart.svg" />

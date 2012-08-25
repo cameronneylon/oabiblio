@@ -14,10 +14,11 @@ setup(
             },
         include_package_data=True,
         install_requires=[
+            'BeautifulSoup',
             'Markdown',
             'jinja2',
-            'python-modargs>=1.4',
-            'BeautifulSoup'
+            'pygal', # pygal implies LXML which can be troublesome
+            'python-modargs>=1.4'
             ],
         name='oabiblio',
         packages=find_packages(),
