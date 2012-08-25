@@ -1,7 +1,7 @@
 from modargs import args
-import sys
-
 from oabiblio.updates import *
+import oabiblio.reports
+import sys
 
 MOD = sys.modules[__name__]
 PROG = 'oacensus'
@@ -40,7 +40,7 @@ def report_command():
     """
     Generates the report.
     """
-    print "this is the report command!"
+    print oabiblio.reports.ccby_numbers_html()
 
 def help_command(on=False):
     args.help_command(PROG, MOD, DEFAULT_COMMAND, on)

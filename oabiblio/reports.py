@@ -1,7 +1,13 @@
 from oabiblio.journal_list import *
 import csv
+import jinja2
+import oabiblio.html_reporting
+import os
 
 def ccby_numbers():
+    """
+    Generates aggregate numbers for cc-by.
+    """
     ccby = JournalList()
     ccby.load_from_csv('ccby_journals.csv')
     ccby_journal_names = [journal.name for journal in ccby.journal_list]
@@ -25,7 +31,8 @@ def ccby_numbers():
                     'Q112', 'Q212']:
 
         dep_records = []
-        with open((quarter+'.csv'), 'rU') as f:
+        quarter_csv_file = os.path.join("data", "%s.csv" % quarter)
+        with open(quarter_csv_file, 'rU') as f:
             reader = csv.DictReader(f)
             for journal in reader:
                 dep_records.append(journal)
@@ -56,17 +63,28 @@ def ccby_numbers():
             if journal['type'] == 'J':
                 total_accumulator += (int(journal['cy'])) #+ int(journal['by']))
 
-        print quarter, str(total_accumulator), str(plos_accumulator), str(ccbync_accumulator), str(ccbyncsa_accumulator)
+        #print quarter, str(total_accumulator), str(plos_accumulator), str(ccbync_accumulator), str(ccbyncsa_accumulator)
         data.append({'quarter' : quarter,
                      'total_deposits' : total_accumulator,
                      'ccby_deposits'  : ccby_accumulator,
                      'ccbync_deposits' : ccbync_accumulator,
                      'ccbyncsa_deposits' : ccbyncsa_accumulator,
                      'plos' : plos_accumulator})
+    return data
 
-    with open('crossref_cydeps_by_license.csv', 'w') as f:
+def ccby_numbers_csv(filename="crossref_cydeps_by_license.csv"):
+    data = ccby_numbers()
+    with open(filename, 'w') as f:
         writer = csv.DictWriter(f, fieldnames = ['quarter', 'total_deposits', 'ccby_deposits',
-                                                 'ccbync_deposits', 'ccbyncsa_deposits', 'plos'])
+            'ccbync_deposits', 'ccbyncsa_deposits', 'plos'])
         writer.writeheader()
         for row in data:
             writer.writerow(row)
+
+def ccby_numbers_md():
+    data = ccby_numbers()
+    return oabiblio.html_reporting.generate("ccby.md", {'data' : data })
+
+def ccby_numbers_html():
+    md = ccby_numbers_md()
+    return oabiblio.html_reporting.convert_markdown(md)
