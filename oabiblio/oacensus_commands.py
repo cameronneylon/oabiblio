@@ -24,6 +24,7 @@ def update_command(
 
     if pubmed:
         # TODO update pubmed
+        pass
 
     if crossref:
         # TODO update crossref
@@ -31,6 +32,7 @@ def update_command(
 
     if doaj:
         # TODO update doaj
+        pass
 
     print "updating is complete!"
 
