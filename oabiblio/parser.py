@@ -81,3 +81,30 @@ class CrossRefDepRecordParser():
         print name
         return name
 
+
+class PubMedParser():
+    """Fetches the number of articles for a given journal for a given year from PubMed"""
+
+    def __init__(self, journal_file, years):
+        self.journal_file = journal_file
+        self.years = years
+
+    def fetch_all_data(self):
+        """Reads the infile and fetches article count for each article contained therein"""
+
+        with open(self.journal_file, 'rU') as jf:
+            reader = csv.DictReader(jf)
+
+            for row in reader:
+                print row
+
+    def fetch_journal_data(self, journal, year):
+        """Fetches the number of articles for a specific journal and year"""
+
+    def write_file(self, filename=None):
+        """Takes our populated data and writes it to a csv file"""
+
+        # If an output filename isn't supplied, create one from the infile name
+        if filename is None:
+            filename = self.journal_file.split(".")[0] + "_article_counts.csv"
+
