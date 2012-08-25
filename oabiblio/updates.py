@@ -1,12 +1,17 @@
 from oabiblio.journal_list import *
+from oabiblio.parser import *
 
-def crossref(years=['12']):
+def update_crossref(years=['12']):
     quarters=['Q1', 'Q2', 'Q3', 'Q4']
     for year in years:
         for quarter in quarters:
             crossrefrecord = CrossRefDepRecordParser(quarter+year)
             crossrefrecord.get_and_parse_dep_record()
             crossrefrecord.write_journal_list(quarter+year+'.csv')
+
+def update_pubmed(years=['12']):
+    parser = PubMedParser("ccby_journals.csv", years)
+    parser.fetch_all_data()
 
 def cc_journal():
     cc_journals = JournalsWithCCLicence()
