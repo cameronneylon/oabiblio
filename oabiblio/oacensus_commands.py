@@ -11,9 +11,9 @@ def run():
     args.parse_and_run_command(sys.argv[1:], MOD, default_command=DEFAULT_COMMAND)
 
 def update_command(
-        pubmed=True, # whether to update from pubmed
-        crossref=True, # whether to update from crossref
-        doaj=True, # whether to update from doaj
+        do_pubmed=True, # whether to update from pubmed
+        do_crossref=True, # whether to update from crossref
+        do_doaj=True, # whether to update from doaj
         years="11,12" # comma separated list of years
         ):
     """
@@ -22,15 +22,15 @@ def update_command(
     # Do any extra processing of praams.
     years = years.split(",")
 
-    if pubmed:
+    if do_pubmed:
         # TODO update pubmed
         pass
 
-    if crossref:
+    if do_crossref:
         # TODO update crossref
         crossref(years)
 
-    if doaj:
+    if do_doaj:
         # TODO update doaj
         pass
 
