@@ -1,8 +1,10 @@
 from modargs import args
 from oabiblio.updates import *
 import oabiblio.reports
+import oabiblio.logger
 import sys
 import os
+from oabiblio import INSTALL_DIR
 
 MOD = sys.modules[__name__]
 PROG = 'oacensus'
@@ -20,32 +22,40 @@ def update_command(
     """
     Downloads the latest source data files from sources.
     """
+    log = oabiblio.logger.log("update command")
+    log.debug("running update command with parameters:")
+    for k, v in locals().iteritems():
+        log.debug("%s: '%s'" % (k, v))
+
     # Do any extra processing of praams.
     years = years.split(",")
 
     if pubmed:
-        print "Running pubmed"
+        log.debug("updating pubmed...")
         update_pubmed(years)
 
     if crossref:
-        # TODO update crossref
+        log.debug("updating crossref...")
         update_crossref(years)
 
     if doaj:
+        log.debug("updating doaj...")
         # TODO update doaj
-        pass
-
-    print "updating is complete!"
 
 def report_command(
     directory='oacensus-report', # Directory (relative to current working dir) in which report files will be written.
     fmt='all' # Format for report. Options are 'csv' or 'html'. The 'all' option generates all formats.
         ):
     """
-    Generates the report.
+    Generates reports.
     """
+    log = oabiblio.logger.log("report command")
+    log.debug("running report command with parameters:")
+    for k, v in locals().iteritems():
+        log.debug("%s: '%s'" % (k, v))
+
     if not os.path.exists(directory):
-        print "Creating directory '%s'" % directory
+        log.debug("Creating directory '%s' for reports" % directory)
         os.makedirs(directory)
 
     def do_csv():

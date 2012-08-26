@@ -4,6 +4,9 @@ import jinja2
 import oabiblio.html_reporting
 import os
 
+import oabiblio.logger
+LOG = oabiblio.logger.log(__name__)
+
 def ccby_numbers():
     """
     Generates aggregate numbers for cc-by.
