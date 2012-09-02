@@ -1,5 +1,5 @@
 from modargs import args
-from oabiblio.updates import *
+import oabiblio.download
 import oabiblio.reports
 import oabiblio.logger
 import sys
@@ -13,6 +13,44 @@ DEFAULT_COMMAND = 'report'
 def run():
     args.parse_and_run_command(sys.argv[1:], MOD, default_command=DEFAULT_COMMAND)
 
+def download_command(
+        doaj=True, #download doaj records
+        cclicence=True, # gather only cc licenced journals from doaj
+        numpages=25, # Default number of pages to download from DOAJ
+        crossref=True, #download crossref deposition reports
+        deprecorddates = 0, # year range of crossref records to download
+        ):
+    """
+    Download DOAJ journal info pages and Crossref deposition records
+    """
+    log = oabiblio.logger.log("download command")
+    log.debug("running download command with parameters:")
+    for k, v in locals().iteritems():
+        log.debug("%s: '%s'" % (k, v))
+        
+    if doaj:
+        if cclicence:
+            oabiblio.download.download_doaj(numpages=numpages)
+        else:
+            raise NotImplementedError
+
+    if crossref:
+        oabiblio.download.download_crossref(deprecorddates)
+
+def parsedoaj_command(
+        datapath="" # Path to downloaded doaj html pages
+        ):
+    """
+    Parse downloaded DOAJ pages to get journal information
+    """
+    log = oabiblio.logger.log("parsedoaj command")
+    log.debug("running parsedoaj command with parameters:")
+    for k, v in locals().iteritems():
+        log.debug("%s: '%s'" % (k, v))
+
+    parser.parsedoaj(datapath)
+
+    
 def update_command(
         pubmed=False, # whether to update from pubmed
         crossref=False, # whether to update from crossref
