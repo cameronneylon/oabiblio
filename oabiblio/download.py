@@ -20,23 +20,20 @@ def download_doaj(numpages):
 
     i=1
     while i < numpages:
-        request_url = "http://www.doaj.org/doaj?func=licensedJournals&p=%s&uiLanguage=en" % str(i)
-        LOG.debug("Requesting page: %s" % request_url)
-        
-        try:
-            response = urllib2.urlopen(request_url)
-        except urllib2.HTTPError, e:
-            if e.code == "404":
-                LOG.error("DOAJ page %s failed with HTTP Error code %s"
-                      % request_url, e.code)
-            
-        LOG.debug("Responding URL: %s" % response.geturl())
+        query_url = "http://www.doaj.org/doaj?func=licensedJournals&p=%s&uiLanguage=en" % str(i)
         filename = "doaj_cc_licenced_journals_page_%s.html" % str(i)
         filepath = os.path.join("data/raw/doaj/", filename)
-        with open(filepath, 'w') as f:
-            LOG.debug("opening file %s to write doaj page" % filepath)
-            f.write(response.read())
+        LOG.debug("Requesting DOAJ page: %s" % query_url)
+        
+        try:
+            LOG.debug("writing file to: %s" % filepath)
+            file, headers = urllib.urlretrieve(query_url, filepath)
+            LOG.debug("wrote page to file: %s" % file)
 
+        except IOError:
+            LOG.error("DOAJ record %s failed with IOError"
+                            % query_url)
+            
         i+=1
 
 
@@ -68,21 +65,19 @@ def download_crossref(deprecorddates):
         for quarter in quarters:
             quarterstring = quarter+yearstring
             query_url = "http://www.crossref.org/06members/%squarterly_deposits.html" % quarterstring
+            filename = "crossref_depositrecords_%s.html" % quarterstring
+            filepath = os.path.join("data/raw/crossref/", filename)
             LOG.debug("Downloading Crossref deposition records from %s"
                       % query_url)
 
             try:
-                response = urllib2.urlopen(query_url)
-                LOG.debug("Responding URL: %s" % response.geturl())
-                filename = "crossref_depositrecords_%s.html" % quarterstring
-                filepath = os.path.join("data/raw/crossref/", filename)
-                with open(filepath, 'w') as f:
-                    LOG.debug("opening file %s to write crossref page" % filepath)
-                    f.write(response.read())
+                LOG.debug("writing file to: %s" % filepath)
+                file, headers = urllib.urlretrieve(query_url, filepath)
+                LOG.debug("wrote page to file: %s" % file)
 
-            except urllib2.HTTPError, e:
-                LOG.error("Crossref record %s failed with HTTP Error code %s"
-                              % request_url, e.code)
+            except IOError:
+                LOG.error("Crossref record %s failed with IOError"
+                              % query_url)
 
 
 
